@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APEX STUDIO | 실패없는 홈페이지 제작 에이전시</title>
+  <meta name="description" content="고객이 읽고, 믿고, 행동하는 홈페이지를 만듭니다. AI 콘텐츠와 40년 IT 기획력으로 매출을 만드는 웹&앱 에이전시" />
+  <meta property="og:title" content="APEX STUDIO | 실패없는 홈페이지 제작 에이전시" />
+  <meta property="og:description" content="고객이 읽고, 믿고, 행동하는 홈페이지. 매출을 만드는 웹&앱 에이전시" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #000000;
+      --purple: #8B00FF;
+      --purple-light: #9933FF;
+      --purple-dark: #6600CC;
+      --accent: #CC44FF;
+      --white: #FFFFFF;
+      --gray: #CCCCCC;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Noto Sans KR', sans-serif;
+      overflow-x: hidden;
+      padding-bottom: 80px;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--white);
+    }
+    .nav-logo svg { width: 32px; height: 32px; }
+    .nav-logo span { font-size: 18px; font-weight: 900; letter-spacing: 2px; }
+    .hamburger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      transform: translateX(100%);
+      transition: transform 0.4s ease;
+    }
+    .mobile-menu.open { transform: translateX(0); }
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+    .menu-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 36px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* ── STICKY BANNER ── */
+    .sticky-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 999;
+      background: linear-gradient(90deg, var(--purple-dark), var(--purple));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      gap: 12px;
+    }
+    .sticky-banner p {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--white);
+    }
+    .sticky-banner button {
+      background: var(--purple-light);
+      color: var(--white);
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: inherit;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .sticky-banner button:hover { background: var(--accent); }
+
+    /* ── HERO SECTION ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px 60px;
+      text-align: center;
+      gap: 32px;
+    }
+    .hero-gradient-bar {
+      width: 180px;
+      height: 380px;
+      background: linear-gradient(160deg, #FF00FF 0%, #8800FF 40%, #0044FF 75%, #FF6600 100%);
+      border-radius: 6px;
+      animation: fadeSlideUp 1s ease both;
+    }
+    .hero-title {
+      font-size: clamp(36px, 8vw, 58px);
+      font-weight: 900;
+      letter-spacing: 4px;
+      animation: fadeSlideUp 1s 0.3s ease both;
+    }
+    .hero-sub {
+      font-size: clamp(15px, 3vw, 20px);
+      color: var(--gray);
+      animation: fadeSlideUp 1s 0.5s ease both;
+      max-width: 480px;
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 80px 24px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .section-full {
+      max-width: 100%;
+      padding: 80px 24px;
+    }
+    .section-title {
+      font-size: clamp(22px, 5vw, 30px);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 40px;
+      line-height: 1.4;
+    }
+
+    /* ── STATS SECTION ── */
+    #stats { text-align: center; }
+    .video-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 28px;
+      background: #111;
+      position: relative;
+    }
+    .video-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--gray);
+      font-size: 14px;
+    }
+    .video-placeholder .play-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(139,0,255,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-placeholder .play-icon::after {
+      content: '';
+      border-style: solid;
+      border-width: 10px 0 10px 20px;
+      border-color: transparent transparent transparent var(--white);
+      margin-left: 4px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .stat-card {
+      background: var(--white);
+      color: #000;
+      border-radius: 12px;
+      padding: 20px 12px;
+      text-align: center;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 8px;
+    }
+    .stat-value {
+      font-size: clamp(24px, 6vw, 34px);
+      font-weight: 900;
+      color: #000;
+    }
+
+    /* ── PORTFOLIO SECTION ── */
+    #portfolio { text-align: center; max-width: 100%; }
+    .portfolio-title {
+      font-size: clamp(36px, 8vw, 56px);
+      font-weight: 900;
+      letter-spacing: 3px;
+      margin-bottom: 32px;
+    }
+    .slider-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: 0 auto 32px;
+    }
+    .slider-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+    .slide {
+      min-width: 100%;
+      position: relative;
+    }
+    .slide img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+    }
+    .slide-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      padding: 40px 20px 20px;
+      text-align: left;
+    }
+    .slide-category {
+      display: inline-block;
+      background: var(--purple);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .slide-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .slide-desc { font-size: 13px; color: var(--gray); }
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .slider-btn.prev { left: 10px; }
+    .slider-btn.next { right: 10px; }
+    .more-btn {
+      display: inline-block;
+      border: 2px solid var(--white);
+      color: var(--white);
+      padding: 12px 40px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      background: transparent;
+      cursor: pointer;
+      letter-spacing: 1px;
+      transition: all 0.2s;
+    }
+    .more-btn:hover { background: var(--white); color: #000; }
+
+    /* ── AI CONTENT GRID ── */
+    #ai-content { max-width: 100%; text-align: center; }
+    .masonry-grid {
+      columns: 2;
+      gap: 8px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 8px;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .masonry-item img {
+      width: 100%;
+      display: block;
+      transition: transform 0.3s;
+    }
+    .masonry-item:hover img { transform: scale(1.03); }
+
+    /* ── STORY SECTIONS ── */
+    .story-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+      text-align: center;
+      gap: 28px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .story-section.wide { max-width: 900px; }
+    .story-sub { font-size: 15px; color: var(--gray); line-height: 1.8; }
+    .story-main { font-size: clamp(20px, 5vw, 26px); font-weight: 700; line-height: 1.6; }
+    .story-big {
+      font-size: clamp(36px, 8vw, 56px);
+      font-weight: 900;
+      line-height: 1.3;
+    }
+    .story-formula {
+      font-size: clamp(24px, 5vw, 32px);
+      font-weight: 700;
+    }
+    .text-purple { color: var(--accent); }
+    .text-bold { font-weight: 900; }
+    .badge {
+      display: inline-block;
+      border: 2px solid var(--white);
+      color: var(--white);
+      padding: 6px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .reasons-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-size: clamp(15px, 3.5vw, 18px);
+      color: var(--gray);
+    }
+    .reasons-list span { display: block; }
+
+    /* ── PORTFOLIO BG ── */
+    .portfolio-bg-section {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .portfolio-bg-grid {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      opacity: 0.2;
+      gap: 4px;
+    }
+    .portfolio-bg-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .portfolio-bg-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .contact-form {
+      background: transparent;
+      border: 1px solid rgba(139,0,255,0.4);
+      border-radius: 16px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+    }
+    .form-field label { font-size: 13px; color: var(--gray); }
+    .form-field input,
+    .form-field textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      color: var(--white);
+      padding: 12px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus { border-color: var(--purple-light); }
+    .form-field textarea { resize: vertical; min-height: 100px; }
+    .submit-btn {
+      background: var(--purple);
+      color: var(--white);
+      border: none;
+      padding: 16px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .submit-btn:hover { background: var(--purple-light); }
+    .contact-info {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: #444;
+      font-size: 13px;
+      border-top: 1px solid #111;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+    .reveal-delay-4 { transition-delay: 0.6s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      .stats-grid { gap: 8px; }
+      .stat-card { padding: 16px 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="20,2 36,14 30,34 10,34 4,14" stroke="white" stroke-width="2.5" fill="none"/>
+      <circle cx="20" cy="20" r="3" fill="white"/>
+      <line x1="20" y1="2" x2="20" y2="10" stroke="white" stroke-width="2"/>
+    </svg>
+    <span>APEX STUDIO</span>
+  </a>
+  <button class="hamburger" id="menuOpen" aria-label="메뉴 열기">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="menu-close" id="menuClose">✕</button>
+  <a href="#" onclick="closeMenu()">홈</a>
+  <a href="#portfolio" onclick="closeMenu()">포트폴리오</a>
+  <a href="#stats" onclick="closeMenu()">제작후기</a>
+  <a href="#contact" onclick="closeMenu()">문의하기</a>
+</div>
+
+<!-- STICKY CTA BANNER -->
+<div class="sticky-banner">
+  <p>내 사업에 맞춘<br>홈페이지 전략, 솔루션 받기</p>
+  <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">무료 상담하기</button>
+</div>
+
+<!-- ① HERO SECTION -->
+<section id="hero">
+  <div class="hero-gradient-bar"></div>
+  <h1 class="hero-title">APEX STUDIO</h1>
+  <p class="hero-sub">실패없는 디자인으로 매출을 만드는 웹&앱 에이전시</p>
+</section>
+
+<!-- ② STATS + REVIEW SECTION -->
+<section id="stats" class="reveal">
+  <h2 class="section-title">고객님들이<br>직접 들려주는 변화 이야기</h2>
+  <div class="video-wrap">
+    <div class="video-placeholder">
+      <div class="play-icon"></div>
+      <span>APEX STUDIO 고객 인터뷰 영상</span>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-label">프로젝트</div>
+      <div class="stat-value" data-count="50" data-suffix="+">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">유지보수</div>
+      <div class="stat-value" data-count="20" data-suffix="+">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">고객 만족도</div>
+      <div class="stat-value" data-count="4.9" data-decimal="true">0</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ WEBSITE PORTFOLIO -->
+<div id="portfolio" class="section-full" style="padding: 80px 0; text-align:center;">
+  <div class="portfolio-title reveal">WEBSITE<br>PORTFOLIO</div>
+  <div class="slider-wrap reveal" style="margin-top:24px;">
+    <div class="slider-track" id="sliderTrack">
+      <div class="slide">
+        <img src="https://picsum.photos/800/450?random=1" alt="브랜드 쇼핑몰" loading="lazy" />
+        <div class="slide-info">
+          <span class="slide-category">브랜드 쇼핑몰</span>
+          <div class="slide-name">APEX 뷰티</div>
+          <div class="slide-desc">프리미엄 뷰티 브랜드 홈페이지</div>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://picsum.photos/800/450?random=2" alt="기업 홈페이지" loading="lazy" />
+        <div class="slide-info">
+          <span class="slide-category">기업 홈페이지</span>
+          <div class="slide-name">KTI 시스템</div>
+          <div class="slide-desc">IT 솔루션 기업 홈페이지</div>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://picsum.photos/800/450?random=3" alt="음식점" loading="lazy" />
+        <div class="slide-info">
+          <span class="slide-category">음식점/프랜차이즈</span>
+          <div class="slide-name">APEX 피자</div>
+          <div class="slide-desc">프랜차이즈 피자 브랜드 홈페이지</div>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://picsum.photos/800/450?random=4" alt="클리닉" loading="lazy" />
+        <div class="slide-info">
+          <span class="slide-category">병원/클리닉</span>
+          <div class="slide-name">스튜디오 연</div>
+          <div class="slide-desc">뷰티 클리닉 홈페이지</div>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://picsum.photos/800/450?random=5" alt="아웃도어" loading="lazy" />
+        <div class="slide-info">
+          <span class="slide-category">전문 서비스</span>
+          <div class="slide-name">새벽 월</div>
+          <div class="slide-desc">아웃도어 브랜드 홈페이지</div>
+        </div>
+      </div>
+    </div>
+    <button class="slider-btn prev" id="prevBtn">&#8592;</button>
+    <button class="slider-btn next" id="nextBtn">&#8594;</button>
+  </div>
+  <button class="more-btn reveal" style="margin-bottom:60px;">더보기</button>
+
+  <!-- AI CONTENT PORTFOLIO -->
+  <div class="portfolio-title reveal" style="margin-bottom:32px;">AI CONTENT<br>PORTFOLIO</div>
+  <div class="masonry-grid reveal" style="padding:0 16px;">
+    <div class="masonry-item"><img src="https://picsum.photos/400/500?random=10" alt="AI 콘텐츠 1" loading="lazy" /></div>
+    <div class="masonry-item"><img src="https://picsum.photos/400/300?random=11" alt="AI 콘텐츠 2" loading="lazy" /></div>
+    <div class="masonry-item"><img src="https://picsum.photos/400/400?random=12" alt="AI 콘텐츠 3" loading="lazy" /></div>
+    <div class="masonry-item"><img src="https://picsum.photos/400/600?random=13" alt="AI 콘텐츠 4" loading="lazy" /></div>
+    <div class="masonry-item"><img src="https://picsum.photos/400/350?random=14" alt="AI 콘텐츠 5" loading="lazy" /></div>
+    <div class="masonry-item"><img src="https://picsum.photos/400/450?random=15" alt="AI 콘텐츠 6" loading="lazy" /></div>
+  </div>
+</div>
+
+<!-- ④ 홈페이지를 만들려는 이유 -->
+<div class="story-section">
+  <h2 class="story-main reveal">홈페이지를 만들려는 이유</h2>
+  <div class="reasons-list">
+    <span class="story-sub reveal reveal-delay-1">안정적인 기업처럼 보이고 싶다</span>
+    <span class="story-sub reveal reveal-delay-2">거래처에게 신뢰를 주고 싶다</span>
+    <span class="story-sub reveal reveal-delay-3">많은 고객을 확보하고 싶다</span>
+    <span class="story-sub reveal reveal-delay-4">경쟁사보다 차별됐으면 좋겠다</span>
+  </div>
+  <p class="story-main reveal">이 많은 이유들은<br>하나의 <span class="text-purple">꼭지점</span>에서 시작됩니다</p>
+</div>
+
+<!-- ⑤ 매출 공식 -->
+<div class="story-section">
+  <p class="story-sub reveal">내 회사의 성장</p>
+  <h2 class="story-big text-purple reveal">매출</h2>
+  <p class="story-formula reveal">매출 = 유입 x <span class="text-bold">전환</span></p>
+  <p class="story-formula reveal">노출 → 유입 → <span class="text-bold">전환</span></p>
+  <p class="story-sub reveal"><span class="text-bold">홈페이지의 역할</span>은<br>광고 퍼널 중 <span class="text-bold">전환</span>에 속하죠</p>
+  <p class="story-sub reveal">많은 돈을 써서 유입량을 늘려도<br>홈페이지가 제 역할을 못한다면<br><span class="text-bold">지속적인 손실</span>을 보게 됩니다.</p>
+  <p class="story-main reveal">즉, 홈페이지 제작은 소비가 아닌<br><span class="text-purple">투자</span>로 봐야합니다.</p>
+</div>
+
+<!-- ⑥ 투자 + 고객 태도 (배경 포트폴리오) -->
+<div class="portfolio-bg-section reveal">
+  <div class="portfolio-bg-grid">
+    <img src="https://picsum.photos/300/200?random=20" alt="" />
+    <img src="https://picsum.photos/300/200?random=21" alt="" />
+    <img src="https://picsum.photos/300/200?random=22" alt="" />
+    <img src="https://picsum.photos/300/200?random=23" alt="" />
+    <img src="https://picsum.photos/300/200?random=24" alt="" />
+    <img src="https://picsum.photos/300/200?random=25" alt="" />
+  </div>
+  <div class="portfolio-bg-content">
+    <p class="story-main">성공적인 투자가 될 홈페이지는<br>어떻게 만들어져야할까요?</p>
+  </div>
+</div>
+
+<!-- ⑦ 고객 태도 -->
+<div class="story-section">
+  <p class="story-sub reveal">아이러니 하게도<br>홈페이지에 방문한 <span class="text-bold">고객의 태도</span>입니다.</p>
+  <h2 class="story-big reveal">읽지 않는다.</h2>
+  <h2 class="story-big reveal">믿지 않는다.</h2>
+  <h2 class="story-big reveal">행동하지 않는다.</h2>
+  <p class="story-main reveal">이 3가지를 해결해야지만<br><span class="text-bold">전환이 잘되는 홈페이지</span>가 됩니다.</p>
+</div>
+
+<!-- ⑧ 첫번째 원칙 -->
+<div class="story-section">
+  <div class="badge reveal">첫번째</div>
+  <h2 class="story-big reveal">읽고 싶게 한다</h2>
+  <p class="story-sub reveal">가장 많이 하는 실수는 <span class="text-bold">좋은 걸 다 보여주고 싶은 마음</span>에 홈페이지에 <span class="text-bold">너무 많은 정보</span>를 나열합니다.</p>
+  <p class="story-sub reveal">하지만 <span class="text-bold">정보 과잉</span>은 오히려 <span class="text-bold">가독성</span>과 <span class="text-bold">설득력</span>을 떨어뜨리게 됩니다.</p>
+  <p class="story-sub reveal">잘 읽게 만들려면 <span class="text-bold">불필요한 내용</span>을 <span class="text-bold">과감히 덜어내야</span> 합니다.</p>
+  <p class="story-main reveal">고객이 <span class="text-bold">궁금해 할 정보만</span> 보여주고<br><span class="text-bold">후킹 멘트</span>를 넣어 계속 읽을 수 있도록<br><span class="text-bold">유도</span>하고 잘 읽히도록<br><span class="text-bold">가독성 있게 정리</span>해야 합니다.</p>
+</div>
+
+<!-- ⑨ 두번째 원칙 -->
+<div class="story-section">
+  <div class="badge reveal">두번째</div>
+  <h2 class="story-big reveal">믿을 수 있게 한다</h2>
+  <p class="story-sub reveal">고객은 직접 경험하기 전까지 눈앞에 보이는<br><span class="text-bold">'겉모습'</span>과 <span class="text-bold">'증거'</span>로만 판단할 수밖에 없습니다.</p>
+  <p class="story-sub reveal">디자인 퀄리티가 낮고 근거 자료가<br>부족한 홈페이지는 <span class="text-bold">신뢰를 얻지 못합니다.</span></p>
+  <p class="story-main reveal">고객이 믿게 하려면<br>브랜드와 어울리는 깔끔한 <span class="text-bold">디자인</span>과<br>실제 후기와 사례, 인증서나 현장 사진과 같은<br><span class="text-bold">근거가 더해져야 설득력</span>이 완성됩니다.</p>
+</div>
+
+<!-- ⑩ 세번째 원칙 -->
+<div class="story-section">
+  <div class="badge reveal">세번째</div>
+  <h2 class="story-big reveal">행동하게 한다</h2>
+  <p class="story-sub reveal">좋은 글과 좋은 디자인만으로<br>고객은 알아서 <span class="text-bold">신청하지 않습니다.</span></p>
+  <p class="story-sub reveal">신청하는 선택 자체가 부담이 되기 때문에<br>미루려고 하죠. 행동으로 이어지지 않으면<br><span class="text-bold">전환은 일어나지 않습니다.</span></p>
+  <p class="story-main reveal">고객이 행동하게 하려면 CTA버튼은<br>눈 띄는 곳마다 넣어 <span class="text-bold">신청을 쉽게</span> 만들고<br><span class="text-bold">놓치기 싫은 심리</span>를 자극하고<br><span class="text-bold">실패에 대한 두려움</span>을 줄여줘야합니다.</p>
+</div>
+
+<!-- ⑪ 마무리 -->
+<div class="story-section">
+  <p class="story-sub reveal">이 3가지 원칙은 대표님 회사의<br><span class="text-bold">비즈니스 모델을 이해</span>하고<br><span class="text-bold">고객을 명확하게 아는 것</span>에서 시작되어야합니다.</p>
+  <p class="story-sub reveal">하지만 이런 기획은 일반적인 기술자들에게는<br><span class="text-bold">쉽지 않은 일</span>입니다.</p>
+  <p class="story-main reveal">요리를 잘하는 것과 장사를 잘하는 게<br>다른 것처럼 디자인 기술과<br>실제로 매출을 만들어내는 기획은<br><span class="text-bold">전혀 별개의 일</span>입니다.</p>
+  <p class="story-sub reveal">40년간 삼성SDS를 시작으로 직접 사업을 운영하며<br>잘 팔기 위해 고민하고 수천 명의 고객을 상대해 온<br><span class="text-bold">경험에서 나옵니다.</span></p>
+</div>
+
+<!-- ⑫ CONTACT SECTION -->
+<section id="contact">
+  <h2 class="section-title reveal">내 사업에 맞춘<br>홈페이지 전략을 받아보세요</h2>
+  <form class="contact-form reveal" id="contactForm">
+    <div class="form-field">
+      <label>이름 *</label>
+      <input type="text" id="name" placeholder="홍길동" required />
+    </div>
+    <div class="form-field">
+      <label>연락처 *</label>
+      <input type="tel" id="phone" placeholder="010-0000-0000" required />
+    </div>
+    <div class="form-field">
+      <label>업종 / 사업 분야 *</label>
+      <input type="text" id="business" placeholder="예: 뷰티 쇼핑몰, 병원, 음식점 등" required />
+    </div>
+    <div class="form-field">
+      <label>문의 내용</label>
+      <textarea id="message" placeholder="어떤 홈페이지가 필요하신가요? 편하게 작성해 주세요."></textarea>
+    </div>
+    <button type="submit" class="submit-btn">무료 상담 신청하기</button>
+  </form>
+  <div class="contact-info reveal">
+    <span>카카오톡 채널: @apex-studio</span>
+    <span>이메일: contact@apex-studio.kr</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 APEX STUDIO. All rights reserved.</p>
+  <p style="margin-top:8px;">실패없는 디자인으로 매출을 만드는 웹&앱 에이전시</p>
+</footer>
+
+<script>
+  // ── Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // ── Mobile menu
+  document.getElementById('menuOpen').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.add('open');
+  });
+  document.getElementById('menuClose').addEventListener('click', closeMenu);
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // ── Slider
+  let currentSlide = 0;
+  const totalSlides = 5;
+  const track = document.getElementById('sliderTrack');
+  function goToSlide(n) {
+    currentSlide = (n + totalSlides) % totalSlides;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+  }
+  document.getElementById('prevBtn').addEventListener('click', () => goToSlide(currentSlide - 1));
+  document.getElementById('nextBtn').addEventListener('click', () => goToSlide(currentSlide + 1));
+  // Touch swipe
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX);
+  track.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) goToSlide(diff > 0 ? currentSlide + 1 : currentSlide - 1);
+  });
+
+  // ── Count up animation
+  function animateCount(el) {
+    const target = parseFloat(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const isDecimal = el.dataset.decimal === 'true';
+    const duration = 2000;
+    const start = performance.now();
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = target * eased;
+      el.textContent = isDecimal
+        ? current.toFixed(1) + suffix
+        : Math.floor(current) + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  // ── Intersection Observer for reveal + countup
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        if (entry.target.dataset.count !== undefined) {
+          animateCount(entry.target);
+          observer.unobserve(entry.target);
+        }
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('[data-count]').forEach(el => observer.observe(el));
+
+  // ── Contact form
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const business = document.getElementById('business').value;
+    if (!name || !phone || !business) {
+      alert('필수 항목을 모두 입력해 주세요.');
+      return;
+    }
+    alert(`${name}님, 신청이 완료되었습니다!\n빠른 시일 내 연락드리겠습니다. 😊`);
+    this.reset();
+  });
+</script>
+</body>
+</html>
