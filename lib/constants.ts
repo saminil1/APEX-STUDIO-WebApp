@@ -18,6 +18,8 @@ export const NAV_ITEMS = [
       { label: "홈페이지", href: "/portfolio" },
       { label: "상세페이지", href: "/portfolio/detail" },
       { label: "Ai컨텐츠", href: "/portfolio/ai" },
+      { label: "ERP", href: "/portfolio/erp" },
+      { label: "LMS", href: "/portfolio/lms" },
     ],
   },
   { label: "비용&기간", href: "/#pricing" },
@@ -343,6 +345,172 @@ export const AI_WORKS: AiWork[] = [
   { id: "a13", category: "제품", desc: "스킨케어 라인업", img: "https://picsum.photos/600/400?random=313", aspect: "landscape" },
   { id: "a14", category: "음식", desc: "한식 코스 요리", img: "https://picsum.photos/600/600?random=314", aspect: "square" },
   { id: "a15", category: "공간", desc: "호텔 로비 렌더링", img: "https://picsum.photos/600/800?random=315", aspect: "portrait" },
+];
+
+/* ── ERP 포트폴리오 데이터 ── */
+export type ErpCategory = "전체" | "ISO ERP" | "Odoo ERP";
+
+export const ERP_CATEGORIES: ErpCategory[] = [
+  "전체", "ISO ERP", "Odoo ERP",
+];
+
+export interface ErpWork {
+  id: string;
+  name: string;
+  category: ErpCategory;
+  desc: string;
+  tags: string[];
+  img: string;
+}
+
+export const ERP_WORKS: ErpWork[] = [
+  {
+    id: "e1",
+    name: "ISO 9001 품질경영시스템",
+    category: "ISO ERP",
+    desc: "품질경영 전 프로세스 디지털화 · 문서관리 자동화",
+    tags: ["ISO 9001", "품질경영", "문서관리"],
+    img: "https://picsum.photos/900/600?random=401",
+  },
+  {
+    id: "e2",
+    name: "ISO 14001 환경경영시스템",
+    category: "ISO ERP",
+    desc: "환경 데이터 모니터링 · 법규 준수 대시보드",
+    tags: ["ISO 14001", "환경경영", "대시보드"],
+    img: "https://picsum.photos/900/600?random=402",
+  },
+  {
+    id: "e3",
+    name: "ISO 45001 안전보건시스템",
+    category: "ISO ERP",
+    desc: "위험성 평가 · 안전보건 교육 이력 관리",
+    tags: ["ISO 45001", "안전보건", "위험성평가"],
+    img: "https://picsum.photos/900/600?random=403",
+  },
+  {
+    id: "e4",
+    name: "ISO 통합경영시스템",
+    category: "ISO ERP",
+    desc: "9001+14001+45001 통합 관리 플랫폼",
+    tags: ["통합경영", "IMS", "심사관리"],
+    img: "https://picsum.photos/900/600?random=404",
+  },
+  {
+    id: "e5",
+    name: "Odoo 생산관리 (MRP)",
+    category: "Odoo ERP",
+    desc: "BOM · 작업지시 · 생산계획 통합 관리",
+    tags: ["Odoo", "생산관리", "MRP"],
+    img: "https://picsum.photos/900/600?random=405",
+  },
+  {
+    id: "e6",
+    name: "Odoo 회계/재무관리",
+    category: "Odoo ERP",
+    desc: "전표 자동 생성 · 재무제표 실시간 조회",
+    tags: ["Odoo", "회계", "재무관리"],
+    img: "https://picsum.photos/900/600?random=406",
+  },
+  {
+    id: "e7",
+    name: "Odoo HR/인사관리",
+    category: "Odoo ERP",
+    desc: "채용 · 근태 · 급여 · 평가 올인원 관리",
+    tags: ["Odoo", "HR", "인사관리"],
+    img: "https://picsum.photos/900/600?random=407",
+  },
+  {
+    id: "e8",
+    name: "Odoo 유통/물류관리",
+    category: "Odoo ERP",
+    desc: "재고 · 입출고 · 배송 추적 통합 솔루션",
+    tags: ["Odoo", "유통", "물류관리"],
+    img: "https://picsum.photos/900/600?random=408",
+  },
+];
+
+/* ── LMS 포트폴리오 데이터 ── */
+export type LmsCategory = "전체" | "ISO 심사원 과정" | "기업 교육" | "플랫폼 구축";
+
+export const LMS_CATEGORIES: LmsCategory[] = [
+  "전체", "ISO 심사원 과정", "기업 교육", "플랫폼 구축",
+];
+
+export interface LmsWork {
+  id: string;
+  name: string;
+  category: LmsCategory;
+  desc: string;
+  tags: string[];
+  img: string;
+}
+
+export const LMS_WORKS: LmsWork[] = [
+  {
+    id: "l1",
+    name: "ISO 9001 심사원 양성과정",
+    category: "ISO 심사원 과정",
+    desc: "품질경영시스템 심사원 자격 취득 온라인 교육",
+    tags: ["Moodle", "ISO 9001", "심사원"],
+    img: "https://picsum.photos/900/600?random=501",
+  },
+  {
+    id: "l2",
+    name: "ISO 14001 심사원 양성과정",
+    category: "ISO 심사원 과정",
+    desc: "환경경영시스템 심사원 자격 취득 온라인 교육",
+    tags: ["Moodle", "ISO 14001", "심사원"],
+    img: "https://picsum.photos/900/600?random=502",
+  },
+  {
+    id: "l3",
+    name: "ISO 45001 심사원 양성과정",
+    category: "ISO 심사원 과정",
+    desc: "안전보건경영시스템 심사원 자격 취득 교육",
+    tags: ["Moodle", "ISO 45001", "심사원"],
+    img: "https://picsum.photos/900/600?random=503",
+  },
+  {
+    id: "l4",
+    name: "ISO 통합 내부심사원 과정",
+    category: "ISO 심사원 과정",
+    desc: "9001+14001+45001 내부심사원 통합 양성 교육",
+    tags: ["Moodle", "내부심사원", "통합과정"],
+    img: "https://picsum.photos/900/600?random=504",
+  },
+  {
+    id: "l5",
+    name: "신입사원 온보딩 교육",
+    category: "기업 교육",
+    desc: "기업 맞춤 신입사원 입문 교육 과정 설계",
+    tags: ["Moodle", "온보딩", "기업교육"],
+    img: "https://picsum.photos/900/600?random=505",
+  },
+  {
+    id: "l6",
+    name: "리더십 역량 강화 과정",
+    category: "기업 교육",
+    desc: "중간관리자 리더십 · 커뮤니케이션 교육",
+    tags: ["Moodle", "리더십", "기업교육"],
+    img: "https://picsum.photos/900/600?random=506",
+  },
+  {
+    id: "l7",
+    name: "Moodle LMS 구축 (제조업)",
+    category: "플랫폼 구축",
+    desc: "제조업 사내 교육 플랫폼 구축 · 운영 컨설팅",
+    tags: ["Moodle", "플랫폼구축", "제조업"],
+    img: "https://picsum.photos/900/600?random=507",
+  },
+  {
+    id: "l8",
+    name: "Moodle LMS 구축 (교육기관)",
+    category: "플랫폼 구축",
+    desc: "교육기관 전용 LMS 구축 · SCORM 연동",
+    tags: ["Moodle", "플랫폼구축", "SCORM"],
+    img: "https://picsum.photos/900/600?random=508",
+  },
 ];
 
 /* ── 가격 패키지 데이터 ── */

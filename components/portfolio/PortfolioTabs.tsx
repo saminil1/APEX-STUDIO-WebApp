@@ -7,6 +7,8 @@ const TABS = [
   { label: "홈페이지", href: "/portfolio" },
   { label: "Ai 컨텐츠", href: "/portfolio/ai" },
   { label: "상세페이지", href: "/portfolio/detail" },
+  { label: "ERP", href: "/portfolio/erp" },
+  { label: "LMS", href: "/portfolio/lms" },
 ];
 
 export default function PortfolioTabs() {
