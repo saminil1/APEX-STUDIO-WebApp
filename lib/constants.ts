@@ -1,6 +1,6 @@
 export const SITE_NAME = "APEX STUDIO";
 export const TAGLINE = "성공하는 디자인으로 매출을 만드는 에이전시";
-export const CONTACT_EMAIL = "contact@apex-studio.kr";
+export const CONTACT_EMAIL = "trustia.cert@gmail.com";
 export const KAKAO_CHANNEL = "@apex-studio";
 
 export const STATS = [

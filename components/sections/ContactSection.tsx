@@ -208,7 +208,7 @@ export default function ContactSection() {
           className="mt-6 flex flex-col gap-2 text-sm text-text-sub text-center"
         >
           <span>카카오톡 채널: {KAKAO_CHANNEL}</span>
-          <span>이메일: {CONTACT_EMAIL}</span>
+          <span>이메일: <a href={`mailto:${CONTACT_EMAIL}`} className="underline hover:text-white transition-colors">{CONTACT_EMAIL}</a></span>
         </motion.div>
       </motion.div>
     </section>
