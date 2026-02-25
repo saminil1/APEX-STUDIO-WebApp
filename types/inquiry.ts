@@ -8,6 +8,13 @@ export interface InquiryItem {
   phone: string;
   business: string;
   message: string;
+  email: string;
+  homepageType: string;
+  homepagePrice: string;
+  additionalOption: string;
+  additionalPrice: string;
+  referenceLink: string;
+  fileName: string;
   status: InquiryStatus;
   memo: string;
   createdAt: string;

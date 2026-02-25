@@ -99,6 +99,12 @@ export default function Navbar() {
                 )}
               </div>
             ))}
+            <Link
+              href="/admin"
+              className="text-white no-underline text-[13px] font-bold px-4 py-2 rounded-lg border border-white/20 hover:border-primary hover:text-primary transition-colors"
+            >
+              로그인
+            </Link>
           </div>
 
           {/* 햄버거 버튼 (모바일) */}
@@ -147,7 +153,7 @@ export default function Navbar() {
               </div>
 
               {/* 메뉴 항목 */}
-              <div className="flex-1 px-7 space-y-0">
+              <div className="flex-1 px-7 space-y-0 overflow-y-auto">
                 {NAV_ITEMS.map((item) => (
                   <div key={item.label}>
                     {"children" in item && item.children ? (
@@ -216,6 +222,17 @@ export default function Navbar() {
                     )}
                   </div>
                 ))}
+
+                {/* 로그인 */}
+                <div className="pt-4 mt-4 border-t border-white/10">
+                  <Link
+                    href="/admin"
+                    onClick={() => setMenuOpen(false)}
+                    className="block py-4 text-text-sub no-underline text-[15px] font-bold tracking-wide hover:text-primary transition-colors"
+                  >
+                    로그인
+                  </Link>
+                </div>
               </div>
             </motion.div>
           </>

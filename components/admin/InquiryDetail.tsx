@@ -111,12 +111,54 @@ export default function InquiryDetail({ inquiry }: InquiryDetailProps) {
             <p className="text-gray-400 text-xs mb-1">업종</p>
             <p className="text-gray-900">{inquiry.business}</p>
           </div>
+          {inquiry.email && (
+            <div>
+              <p className="text-gray-400 text-xs mb-1">이메일</p>
+              <p className="text-gray-900">{inquiry.email}</p>
+            </div>
+          )}
+          {inquiry.homepageType && (
+            <div>
+              <p className="text-gray-400 text-xs mb-1">홈페이지 유형</p>
+              <p className="text-gray-900">
+                {inquiry.homepageType}
+                {inquiry.homepagePrice && (
+                  <span className="text-gray-500 ml-1">({inquiry.homepagePrice})</span>
+                )}
+              </p>
+            </div>
+          )}
+          {inquiry.additionalOption && inquiry.additionalOption !== "선택 안함" && (
+            <div>
+              <p className="text-gray-400 text-xs mb-1">추가 옵션</p>
+              <p className="text-gray-900">
+                {inquiry.additionalOption}
+                {inquiry.additionalPrice && (
+                  <span className="text-gray-500 ml-1">({inquiry.additionalPrice})</span>
+                )}
+              </p>
+            </div>
+          )}
           {inquiry.message && (
             <div className="sm:col-span-2">
               <p className="text-gray-400 text-xs mb-1">문의 내용</p>
               <p className="text-gray-900 whitespace-pre-wrap">
                 {inquiry.message}
               </p>
+            </div>
+          )}
+          {inquiry.referenceLink && (
+            <div className="sm:col-span-2">
+              <p className="text-gray-400 text-xs mb-1">참고 사이트</p>
+              <p className="text-gray-900 whitespace-pre-wrap">
+                {inquiry.referenceLink}
+              </p>
+            </div>
+          )}
+          {inquiry.fileName && (
+            <div className="sm:col-span-2">
+              <p className="text-gray-400 text-xs mb-1">첨부 파일명</p>
+              <p className="text-gray-900">{inquiry.fileName}</p>
             </div>
           )}
         </div>

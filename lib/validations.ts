@@ -16,5 +16,20 @@ export const loginSchema = z.object({
   password: z.string().min(1, "비밀번호를 입력해주세요"),
 });
 
+export const wizardInquirySchema = z.object({
+  name: z.string().min(1, "이름을 입력해주세요").max(50),
+  phone: z.string().min(1, "연락처를 입력해주세요").max(20),
+  email: z.string().max(100).default(""),
+  business: z.string().max(100).default(""),
+  homepageType: z.string().max(100).default(""),
+  homepagePrice: z.string().max(50).default(""),
+  additionalOption: z.string().max(100).default(""),
+  additionalPrice: z.string().max(50).default(""),
+  message: z.string().max(2000).default(""),
+  referenceLink: z.string().max(1000).default(""),
+  fileName: z.string().max(200).default(""),
+});
+
 export type InquiryCreateInput = z.infer<typeof inquiryCreateSchema>;
+export type WizardInquiryInput = z.infer<typeof wizardInquirySchema>;
 export type InquiryUpdateInput = z.infer<typeof inquiryUpdateSchema>;

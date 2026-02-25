@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { inquiryCreateSchema } from "@/lib/validations";
+import { wizardInquirySchema, inquiryCreateSchema } from "@/lib/validations";
 import type { InquiryStatus } from "@prisma/client";
 
 export const dynamic = "force-dynamic";
@@ -10,17 +10,22 @@ export const dynamic = "force-dynamic";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const result = inquiryCreateSchema.safeParse(body);
 
-    if (!result.success) {
+    // 위자드 폼 → 기존 폼 순서로 검증 (하위 호환)
+    const wizardResult = wizardInquirySchema.safeParse(body);
+    const legacyResult = inquiryCreateSchema.safeParse(body);
+
+    if (!wizardResult.success && !legacyResult.success) {
       return NextResponse.json(
-        { error: "입력 데이터가 유효하지 않습니다", details: result.error.flatten() },
+        { error: "입력 데이터가 유효하지 않습니다", details: legacyResult.error.flatten() },
         { status: 400 }
       );
     }
 
+    const data = wizardResult.success ? wizardResult.data : legacyResult.data!;
+
     const inquiry = await prisma.inquiry.create({
-      data: result.data,
+      data,
     });
 
     return NextResponse.json({ success: true, id: inquiry.id }, { status: 201 });

@@ -19,15 +19,22 @@ enum InquiryStatus {
 }
 
 model Inquiry {
-  id        String        @id @default(cuid())
-  name      String
-  phone     String
-  business  String
-  message   String        @default("")
-  status    InquiryStatus @default(NEW)
-  memo      String        @default("")
-  createdAt DateTime      @default(now()) @map("created_at")
-  updatedAt DateTime      @updatedAt @map("updated_at")
+  id               String        @id @default(cuid())
+  name             String
+  phone            String
+  business         String
+  message          String        @default("")
+  email            String        @default("")
+  homepageType     String        @default("") @map("homepage_type")
+  homepagePrice    String        @default("") @map("homepage_price")
+  additionalOption String        @default("") @map("additional_option")
+  additionalPrice  String        @default("") @map("additional_price")
+  referenceLink    String        @default("") @map("reference_link")
+  fileName         String        @default("") @map("file_name")
+  status           InquiryStatus @default(NEW)
+  memo             String        @default("")
+  createdAt        DateTime      @default(now()) @map("created_at")
+  updatedAt        DateTime      @updatedAt @map("updated_at")
 
   @@map("inquiries")
 }

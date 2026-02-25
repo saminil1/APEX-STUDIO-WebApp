@@ -1,11 +1,9 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 export default function StickyBanner() {
-  const handleClick = () => {
-    document
-      .getElementById("contact")
-      ?.scrollIntoView({ behavior: "smooth" });
-  };
+  const router = useRouter();
 
   return (
     <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-[999] w-[calc(100%-40px)] max-w-[800px]">
@@ -16,7 +14,7 @@ export default function StickyBanner() {
           홈페이지 전략, 솔루션 받기
         </p>
         <button
-          onClick={handleClick}
+          onClick={() => router.push("/contact")}
           className="flex-shrink-0 whitespace-nowrap rounded-xl bg-white px-7 py-3 text-[15px] font-bold text-black transition-all hover:bg-gray-100 active:scale-95"
         >
           신청하기

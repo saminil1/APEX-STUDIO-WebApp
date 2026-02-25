@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { PRICING_PLANS, ADDITIONAL_SERVICES } from "@/lib/constants";
 
@@ -118,16 +119,12 @@ export default function PricingSection() {
               홈페이지 전략, 솔루션 받기
             </p>
           </div>
-          <button
-            onClick={() =>
-              document
-                .getElementById("contact")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="bg-white text-primary font-bold px-8 py-3 rounded-full hover:bg-white/90 transition-colors text-sm shrink-0"
+          <Link
+            href="/contact"
+            className="bg-white text-primary font-bold px-8 py-3 rounded-full hover:bg-white/90 transition-colors text-sm shrink-0 no-underline"
           >
             신청하기
-          </button>
+          </Link>
         </motion.div>
       </motion.div>
 

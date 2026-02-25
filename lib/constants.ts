@@ -24,7 +24,7 @@ export const NAV_ITEMS = [
   },
   { label: "비용&기간", href: "/#pricing" },
   { label: "제작 과정", href: "/#process" },
-  { label: "상담 신청", href: "/#contact" },
+  { label: "상담 신청", href: "/contact" },
 ];
 
 export const PORTFOLIO_ITEMS = [
@@ -743,6 +743,34 @@ export const REASONS = [
   "거래처에게 신뢰를 주고 싶다",
   "많은 고객을 확보하고 싶다",
   "경쟁사보다 차별됐으면 좋겠다",
+];
+
+/* ── 상담 신청 위자드 데이터 ── */
+export const HOMEPAGE_TYPES = [
+  { label: "회사 홈페이지", price: "420만원" },
+  { label: "브랜드 쇼핑몰", price: "380만원" },
+  { label: "일반 쇼핑몰", price: "280만원" },
+  { label: "랜딩페이지", price: "210만원" },
+  { label: "웹서비스", price: "별도 협의" },
+  { label: "기타 / 잘 모르겠어요", price: "상담 후 안내" },
+];
+
+export const WIZARD_ADDITIONAL_OPTIONS = [
+  { label: "선택 안함", price: "" },
+  { label: "상세페이지 제작", price: "30만원~" },
+  { label: "AI 콘텐츠 제작", price: "15만원~/건" },
+  { label: "외국어 버전 추가", price: "별도 협의" },
+];
+
+export const WIZARD_STEPS = [
+  "업체명(담당자)",
+  "연락처",
+  "이메일",
+  "홈페이지 유형",
+  "추가 옵션",
+  "문의 내용",
+  "참고 사이트",
+  "기획안 첨부",
 ];
 
 export const PRINCIPLES = [
