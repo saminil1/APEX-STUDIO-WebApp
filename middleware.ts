@@ -62,9 +62,17 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  // /api/chat/sessions/admin 관리자 인증 보호
+  if (pathname.startsWith("/api/chat/sessions/admin")) {
+    const authenticated = await isAuthenticated(request);
+    if (!authenticated) {
+      return NextResponse.json({ error: "인증이 필요합니다" }, { status: 401 });
+    }
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/api/inquiries/:path*"],
+  matcher: ["/admin/:path*", "/api/inquiries/:path*", "/api/chat/sessions/admin/:path*"],
 };

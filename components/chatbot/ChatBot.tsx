@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import ChatBotButton from './ChatBotButton';
 import ChatWindow, { type ChatMessage } from './ChatWindow';
@@ -11,6 +11,8 @@ import {
   type FAQCategory,
   type FAQItem,
 } from '@/lib/faqData';
+
+const SESSION_KEY = 'apex_chat_session_id';
 
 let messageId = 0;
 function nextId() {
@@ -25,37 +27,99 @@ function createUserMessage(content: string): ChatMessage {
   return { id: nextId(), type: 'user', content };
 }
 
+function saveMessage(sessionId: string, sender: 'user' | 'bot', content: string) {
+  fetch('/api/chat/messages', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sessionId, sender, content }),
+  }).catch(() => {});
+}
+
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([createBotMessage(GREETING_MESSAGE)]);
   const [activeCategory, setActiveCategory] = useState<FAQCategory | null>(null);
+  const sessionIdRef = useRef<string | null>(null);
+  const sessionInitRef = useRef(false);
+
+  const ensureSession = useCallback(async () => {
+    if (sessionIdRef.current) return sessionIdRef.current;
+
+    const stored = localStorage.getItem(SESSION_KEY);
+    if (stored) {
+      sessionIdRef.current = stored;
+      return stored;
+    }
+
+    if (sessionInitRef.current) return null;
+    sessionInitRef.current = true;
+
+    try {
+      const res = await fetch('/api/chat/sessions', { method: 'POST' });
+      if (res.ok) {
+        const { id } = await res.json();
+        sessionIdRef.current = id;
+        localStorage.setItem(SESSION_KEY, id);
+        saveMessage(id, 'bot', GREETING_MESSAGE);
+        return id;
+      }
+    } catch {
+      // 세션 생성 실패해도 UX 영향 없음
+    }
+    sessionInitRef.current = false;
+    return null;
+  }, []);
 
   const toggleOpen = useCallback(() => {
-    setIsOpen((prev) => !prev);
-  }, []);
+    setIsOpen((prev) => {
+      const next = !prev;
+      if (next) {
+        ensureSession();
+      }
+      return next;
+    });
+  }, [ensureSession]);
 
   const handleCategorySelect = useCallback((category: FAQCategory) => {
     setActiveCategory(category);
+    const botContent = `[${category}] 카테고리입니다. 아래에서 궁금한 질문을 선택해 주세요.`;
     setMessages((prev) => [
       ...prev,
       createUserMessage(category),
-      createBotMessage(`[${category}] 카테고리입니다. 아래에서 궁금한 질문을 선택해 주세요.`),
+      createBotMessage(botContent),
     ]);
+
+    const sid = sessionIdRef.current;
+    if (sid) {
+      saveMessage(sid, 'user', category);
+      saveMessage(sid, 'bot', botContent);
+    }
   }, []);
 
   const handleQuestionSelect = useCallback((item: FAQItem) => {
     setActiveCategory(null);
+    const followUp = '다른 궁금한 점이 있으시면 카테고리를 선택하시거나 키워드를 입력해 주세요.';
     setMessages((prev) => [
       ...prev,
       createUserMessage(item.question),
       createBotMessage(item.answer),
-      createBotMessage('다른 궁금한 점이 있으시면 카테고리를 선택하시거나 키워드를 입력해 주세요.'),
+      createBotMessage(followUp),
     ]);
+
+    const sid = sessionIdRef.current;
+    if (sid) {
+      saveMessage(sid, 'user', item.question);
+      saveMessage(sid, 'bot', item.answer);
+      saveMessage(sid, 'bot', followUp);
+    }
   }, []);
 
   const handleTextSubmit = useCallback((text: string) => {
     const userMsg = createUserMessage(text);
     const results = searchFAQ(text);
+
+    const sid = sessionIdRef.current;
+    if (sid) saveMessage(sid, 'user', text);
 
     if (results.length > 0) {
       const answerLines = results
@@ -63,6 +127,7 @@ export default function ChatBot() {
         .join('\n\n');
       setActiveCategory(null);
       setMessages((prev) => [...prev, userMsg, createBotMessage(answerLines)]);
+      if (sid) saveMessage(sid, 'bot', answerLines);
     } else {
       setActiveCategory(null);
       setMessages((prev) => [
@@ -70,6 +135,7 @@ export default function ChatBot() {
         userMsg,
         createBotMessage(NO_RESULT_MESSAGE),
       ]);
+      if (sid) saveMessage(sid, 'bot', NO_RESULT_MESSAGE);
     }
   }, []);
 
