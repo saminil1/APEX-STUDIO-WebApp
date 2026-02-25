@@ -481,6 +481,30 @@ export const LMS_WORKS: LmsWork[] = [
   },
   {
     id: "l2",
+    name: "ISO/IEC 27001 심사원 양성과정",
+    category: "ISO 심사원 과정",
+    desc: "정보보안경영시스템 심사원 자격 취득 교육",
+    tags: ["Moodle", "ISO 27001", "심사원"],
+    img: "https://picsum.photos/900/600?random=509",
+  },
+  {
+    id: "l3",
+    name: "ISO/IEC 27701 심사원 양성과정",
+    category: "ISO 심사원 과정",
+    desc: "개인정보보안경영시스템 심사원 자격 취득 교육",
+    tags: ["Moodle", "ISO 27701", "심사원"],
+    img: "https://picsum.photos/900/600?random=510",
+  },
+  {
+    id: "l4",
+    name: "ISO/IEC 20000-1 심사원 양성과정",
+    category: "ISO 심사원 과정",
+    desc: "IT서비스경영시스템 심사원 자격 취득 교육",
+    tags: ["Moodle", "ISO 20000", "심사원"],
+    img: "https://picsum.photos/900/600?random=511",
+  },
+  {
+    id: "l5",
     name: "ISO 14001 심사원 양성과정",
     category: "ISO 심사원 과정",
     desc: "환경경영시스템 심사원 자격 취득 온라인 교육",
@@ -488,7 +512,7 @@ export const LMS_WORKS: LmsWork[] = [
     img: "https://picsum.photos/900/600?random=502",
   },
   {
-    id: "l3",
+    id: "l6",
     name: "ISO 45001 심사원 양성과정",
     category: "ISO 심사원 과정",
     desc: "안전보건경영시스템 심사원 자격 취득 교육",
@@ -496,7 +520,7 @@ export const LMS_WORKS: LmsWork[] = [
     img: "https://picsum.photos/900/600?random=503",
   },
   {
-    id: "l4",
+    id: "l7",
     name: "ISO 통합 내부심사원 과정",
     category: "ISO 심사원 과정",
     desc: "9001+14001+45001 내부심사원 통합 양성 교육",
@@ -504,7 +528,7 @@ export const LMS_WORKS: LmsWork[] = [
     img: "https://picsum.photos/900/600?random=504",
   },
   {
-    id: "l5",
+    id: "l8",
     name: "신입사원 온보딩 교육",
     category: "기업 교육",
     desc: "기업 맞춤 신입사원 입문 교육 과정 설계",
@@ -512,7 +536,7 @@ export const LMS_WORKS: LmsWork[] = [
     img: "https://picsum.photos/900/600?random=505",
   },
   {
-    id: "l6",
+    id: "l9",
     name: "리더십 역량 강화 과정",
     category: "기업 교육",
     desc: "중간관리자 리더십 · 커뮤니케이션 교육",
@@ -520,7 +544,7 @@ export const LMS_WORKS: LmsWork[] = [
     img: "https://picsum.photos/900/600?random=506",
   },
   {
-    id: "l7",
+    id: "l10",
     name: "Moodle LMS 구축 (제조업)",
     category: "플랫폼 구축",
     desc: "제조업 사내 교육 플랫폼 구축 · 운영 컨설팅",
@@ -528,7 +552,7 @@ export const LMS_WORKS: LmsWork[] = [
     img: "https://picsum.photos/900/600?random=507",
   },
   {
-    id: "l8",
+    id: "l11",
     name: "Moodle LMS 구축 (교육기관)",
     category: "플랫폼 구축",
     desc: "교육기관 전용 LMS 구축 · SCORM 연동",
