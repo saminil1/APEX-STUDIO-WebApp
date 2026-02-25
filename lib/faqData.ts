@@ -11,7 +11,7 @@ export interface FAQItem {
 export const CATEGORIES: FAQCategory[] = ['서비스', '가격', '제작과정', '기술', '기타'];
 
 export const GREETING_MESSAGE =
-  '안녕하세요! APEX STUDIO 챗봇입니다.\n궁금하신 내용의 카테고리를 선택하시거나, 키워드를 입력해 주세요.';
+  '안녕하세요! APEX STUDIO 챗봇입니다.\n궁금하신 내용의 카테고리를 선택하시거나, 키워드를 입력해 주세요.\n\n📞 전화: 010-2299-5655\n📧 이메일: trustia.cert@gmail.com';
 
 export const NO_RESULT_MESSAGE =
   '죄송합니다. 해당 질문에 대한 답변을 찾지 못했습니다.\n아래 문의폼을 통해 직접 문의해 주시거나 전화(010-2299-5655)로 연락해 주시면 빠르게 답변드리겠습니다.';
