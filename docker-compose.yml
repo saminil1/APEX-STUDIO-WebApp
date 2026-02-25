@@ -1,0 +1,44 @@
+services:
+  # ── PostgreSQL ──
+  db:
+    image: postgres:16-alpine
+    container_name: apex-studio-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: apex_studio
+      POSTGRES_USER: apex
+      POSTGRES_PASSWORD: apex2026!
+    ports:
+      - "5433:5432"
+    volumes:
+      - apex_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U apex -d apex_studio"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── Next.js App ──
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: apex-studio-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://apex:apex2026!@db:5432/apex_studio?schema=public
+      ADMIN_PASSWORD: apex2026!
+      ADMIN_SESSION_SECRET: apex-studio-jwt-secret-key-change-in-production-2026
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      NEXT_PUBLIC_GA_ID: G-XXXXXXXXXX
+      NEXT_PUBLIC_EMAILJS_SERVICE_ID: service_xxxxxxxx
+      NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: template_xxxxxxxx
+      NEXT_PUBLIC_EMAILJS_PUBLIC_KEY: xxxxxxxxxxxxxxxx
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  apex_pgdata:
