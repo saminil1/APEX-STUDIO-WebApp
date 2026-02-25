@@ -5,7 +5,9 @@ generator client {
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  // directUrl: 클라우드 DB 사용 시 connection pooler 우회용
+  // AWS RDS / Google Cloud SQL 직접 연결 시에는 불필요
+  // directUrl = env("DIRECT_URL")
 }
 
 enum InquiryStatus {
