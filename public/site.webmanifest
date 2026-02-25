@@ -1,0 +1,13 @@
+{
+  "name": "APEX STUDIO",
+  "short_name": "APEX",
+  "description": "성공하는 디자인으로 매출을 만드는 에이전시",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#8B00FF",
+  "icons": [
+    { "src": "/icon-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

@@ -12,6 +12,15 @@ const notoSansKR = Noto_Sans_KR({
 export const metadata: Metadata = {
   metadataBase: new URL("https://apex-studio.kr"),
   title: "APEX STUDIO | 성공하는 홈페이지 제작 에이전시",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
   description:
     "고객이 읽고, 믿고, 행동하는 홈페이지. AI 콘텐츠와 40년 IT 기획력으로 매출을 만드는 웹&앱 에이전시 APEX STUDIO",
   keywords: [
