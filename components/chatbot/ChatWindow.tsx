@@ -18,6 +18,27 @@ interface ChatWindowProps {
   onTextSubmit: (text: string) => void;
 }
 
+function renderLinkedContent(text: string) {
+  const parts = text.split(/([\w.-]+@[\w.-]+\.\w+|(?:010|011|016|017|018|019)-\d{3,4}-\d{4})/g);
+  return parts.map((part, i) => {
+    if (/[\w.-]+@[\w.-]+\.\w+/.test(part)) {
+      return (
+        <a key={i} href={`mailto:${part}`} className="underline text-accent hover:text-white transition-colors">
+          {part}
+        </a>
+      );
+    }
+    if (/(?:010|011|016|017|018|019)-\d{3,4}-\d{4}/.test(part)) {
+      return (
+        <a key={i} href={`tel:${part}`} className="underline text-accent hover:text-white transition-colors">
+          {part}
+        </a>
+      );
+    }
+    return part;
+  });
+}
+
 export default function ChatWindow({
   messages,
   activeCategory,
@@ -77,7 +98,7 @@ export default function ChatWindow({
                   : 'bg-white/10 text-white rounded-bl-md'
               }`}
             >
-              {msg.content}
+              {msg.type === 'bot' ? renderLinkedContent(msg.content) : msg.content}
             </div>
           </div>
         ))}
