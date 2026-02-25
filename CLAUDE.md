@@ -10,7 +10,7 @@
 | :--- | :--- |
 | **목적** | APEX STUDIO 웹&앱 에이전시 홍보 홈페이지 |
 | **레퍼런스** | nofaildesign.com (동일 디자인/UX/레이아웃) |
-| **브랜드 슬로건** | 실패없는 디자인으로 매출을 만드는 에이전시 |
+| **브랜드 슬로건** | 성공하는 디자인으로 매출을 만드는 에이전시 |
 | **PO** | 이준곤 (Mark) |
 | **개발 언어** | 한국어 (모든 커뮤니케이션) |
 
@@ -172,16 +172,16 @@ perf:     성능 개선
 
 | Phase | 작업 내용 | 상태 |
 | --- | --- | --- |
-| Phase 1 | Next.js 14 프로젝트 셋업 + 패키지 설치 | 미시작 |
-| Phase 2 | Navbar + StickyBanner 공통 컴포넌트 | 미시작 |
-| Phase 3 | Hero 섹션 (그라디언트 바 + 타이틀) | 미시작 |
-| Phase 4 | 실적 & 인터뷰 섹션 (카운트업) | 미시작 |
-| Phase 5 | 포트폴리오 슬라이더 | 미시작 |
-| Phase 6 | AI 콘텐츠 갤러리 (Masonry) | 미시작 |
-| Phase 7 | 스크롤 스토리텔링 (S05~S12) | 미시작 |
-| Phase 8 | 문의 폼 + EmailJS | 미시작 |
-| Phase 9 | 페이지 조립 (page.tsx) | 미시작 |
-| Phase 10 | SEO + Vercel 배포 | 미시작 |
+| Phase 1 | Next.js 14 프로젝트 셋업 + 패키지 설치 | 완료 |
+| Phase 2 | Navbar + StickyBanner 공통 컴포넌트 | 완료 |
+| Phase 3 | Hero 섹션 (그라디언트 바 + 타이틀) | 완료 |
+| Phase 4 | 실적 & 인터뷰 섹션 (카운트업) | 완료 |
+| Phase 5 | 포트폴리오 슬라이더 | 완료 |
+| Phase 6 | AI 콘텐츠 갤러리 (Masonry) | 완료 |
+| Phase 7 | 스크롤 스토리텔링 (S05~S12) | 완료 |
+| Phase 8 | 문의 폼 + EmailJS | 완료 |
+| Phase 9 | 페이지 조립 (page.tsx) | 완료 |
+| Phase 10 | SEO + Vercel 배포 준비 | 완료 |
 
 ## 참고 문서 (docs/)
 

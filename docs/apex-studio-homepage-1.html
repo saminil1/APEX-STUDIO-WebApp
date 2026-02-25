@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>APEX STUDIO | 실패없는 홈페이지 제작 에이전시</title>
-  <meta name="description" content="고객이 읽고, 믿고, 행동하는 홈페이지를 만듭니다. AI 콘텐츠와 40년 IT 기획력으로 매출을 만드는 웹&앱 에이전시" />
-  <meta property="og:title" content="APEX STUDIO | 실패없는 홈페이지 제작 에이전시" />
-  <meta property="og:description" content="고객이 읽고, 믿고, 행동하는 홈페이지. 매출을 만드는 웹&앱 에이전시" />
+  <title>Apex-homep | 성공하는 홈페이지를 만드는 에이전시</title>
+  <meta name="description" content="고객이 읽고, 믿고, 행동하는 홈페이지를 만듭니다. AI 콘텐츠와 40년 IT 기획력으로 매출을 키우는 웹&앱 에이전시" />
+  <meta property="og:title" content="Apex-homep | 성공하는 홈페이지를 만드는 에이전시" />
+  <meta property="og:description" content="고객이 읽고, 믿고, 행동하는 홈페이지. 매출을 키우는 웹&앱 에이전시" />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet" />
@@ -54,6 +54,7 @@
     }
     .nav-logo svg { width: 32px; height: 32px; }
     .nav-logo span { font-size: 18px; font-weight: 900; letter-spacing: 2px; }
+    .nav-logo-kr { font-size: 11px !important; font-weight: 700 !important; color: var(--accent); letter-spacing: 1px !important; }
     .hamburger {
       background: none;
       border: none;
@@ -162,6 +163,13 @@
       font-weight: 900;
       letter-spacing: 4px;
       animation: fadeSlideUp 1s 0.3s ease both;
+    }
+    .hero-sub-kr {
+      font-size: clamp(18px, 4vw, 24px);
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 6px;
+      animation: fadeSlideUp 1s 0.4s ease both;
     }
     .hero-sub {
       font-size: clamp(15px, 3vw, 20px);
@@ -537,7 +545,8 @@
       <circle cx="20" cy="20" r="3" fill="white"/>
       <line x1="20" y1="2" x2="20" y2="10" stroke="white" stroke-width="2"/>
     </svg>
-    <span>APEX STUDIO</span>
+    <span>Apex-homep</span>
+    <span class="nav-logo-kr">에이펙스홈피</span>
   </a>
   <button class="hamburger" id="menuOpen" aria-label="메뉴 열기">
     <span></span><span></span><span></span>
@@ -555,24 +564,25 @@
 
 <!-- STICKY CTA BANNER -->
 <div class="sticky-banner">
-  <p>내 사업에 맞춘<br>홈페이지 전략, 솔루션 받기</p>
-  <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">무료 상담하기</button>
+  <p>내 사업의 성장을 위한<br>홈페이지 전략, 지금 받아보세요</p>
+  <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">성장 전략 받기</button>
 </div>
 
 <!-- ① HERO SECTION -->
 <section id="hero">
   <div class="hero-gradient-bar"></div>
-  <h1 class="hero-title">APEX STUDIO</h1>
-  <p class="hero-sub">실패없는 디자인으로 매출을 만드는 웹&앱 에이전시</p>
+  <h1 class="hero-title">Apex-homep</h1>
+  <p class="hero-sub-kr">에이펙스홈피</p>
+  <p class="hero-sub">성공하는 디자인으로 매출을 키우는 웹&앱 에이전시</p>
 </section>
 
 <!-- ② STATS + REVIEW SECTION -->
 <section id="stats" class="reveal">
-  <h2 class="section-title">고객님들이<br>직접 들려주는 변화 이야기</h2>
+  <h2 class="section-title">고객님들이<br>직접 들려주는 성공 이야기</h2>
   <div class="video-wrap">
     <div class="video-placeholder">
       <div class="play-icon"></div>
-      <span>APEX STUDIO 고객 인터뷰 영상</span>
+      <span>Apex-homep 고객 인터뷰 영상</span>
     </div>
   </div>
   <div class="stats-grid">
@@ -600,7 +610,7 @@
         <img src="https://picsum.photos/800/450?random=1" alt="브랜드 쇼핑몰" loading="lazy" />
         <div class="slide-info">
           <span class="slide-category">브랜드 쇼핑몰</span>
-          <div class="slide-name">APEX 뷰티</div>
+          <div class="slide-name">에이펙스 뷰티</div>
           <div class="slide-desc">프리미엄 뷰티 브랜드 홈페이지</div>
         </div>
       </div>
@@ -616,7 +626,7 @@
         <img src="https://picsum.photos/800/450?random=3" alt="음식점" loading="lazy" />
         <div class="slide-info">
           <span class="slide-category">음식점/프랜차이즈</span>
-          <div class="slide-name">APEX 피자</div>
+          <div class="slide-name">에이펙스 피자</div>
           <div class="slide-desc">프랜차이즈 피자 브랜드 홈페이지</div>
         </div>
       </div>
@@ -656,25 +666,25 @@
 
 <!-- ④ 홈페이지를 만들려는 이유 -->
 <div class="story-section">
-  <h2 class="story-main reveal">홈페이지를 만들려는 이유</h2>
+  <h2 class="story-main reveal">홈페이지가 만들어주는 가치</h2>
   <div class="reasons-list">
-    <span class="story-sub reveal reveal-delay-1">안정적인 기업처럼 보이고 싶다</span>
-    <span class="story-sub reveal reveal-delay-2">거래처에게 신뢰를 주고 싶다</span>
-    <span class="story-sub reveal reveal-delay-3">많은 고객을 확보하고 싶다</span>
-    <span class="story-sub reveal reveal-delay-4">경쟁사보다 차별됐으면 좋겠다</span>
+    <span class="story-sub reveal reveal-delay-1">우리 회사의 전문성을 보여줄 수 있다</span>
+    <span class="story-sub reveal reveal-delay-2">거래처와 더 깊은 신뢰를 쌓을 수 있다</span>
+    <span class="story-sub reveal reveal-delay-3">새로운 고객이 자연스럽게 찾아온다</span>
+    <span class="story-sub reveal reveal-delay-4">경쟁사와 확실한 차별점을 만들 수 있다</span>
   </div>
-  <p class="story-main reveal">이 많은 이유들은<br>하나의 <span class="text-purple">꼭지점</span>에서 시작됩니다</p>
+  <p class="story-main reveal">이 모든 가치는<br>하나의 <span class="text-purple">꼭지점</span>에서 시작됩니다</p>
 </div>
 
 <!-- ⑤ 매출 공식 -->
 <div class="story-section">
-  <p class="story-sub reveal">내 회사의 성장</p>
+  <p class="story-sub reveal">내 회사의 성장 엔진</p>
   <h2 class="story-big text-purple reveal">매출</h2>
   <p class="story-formula reveal">매출 = 유입 x <span class="text-bold">전환</span></p>
   <p class="story-formula reveal">노출 → 유입 → <span class="text-bold">전환</span></p>
-  <p class="story-sub reveal"><span class="text-bold">홈페이지의 역할</span>은<br>광고 퍼널 중 <span class="text-bold">전환</span>에 속하죠</p>
-  <p class="story-sub reveal">많은 돈을 써서 유입량을 늘려도<br>홈페이지가 제 역할을 못한다면<br><span class="text-bold">지속적인 손실</span>을 보게 됩니다.</p>
-  <p class="story-main reveal">즉, 홈페이지 제작은 소비가 아닌<br><span class="text-purple">투자</span>로 봐야합니다.</p>
+  <p class="story-sub reveal"><span class="text-bold">홈페이지의 역할</span>은<br>광고 퍼널 중 가장 중요한 <span class="text-bold">전환</span>을 담당합니다</p>
+  <p class="story-sub reveal">잘 만든 홈페이지 하나가<br>유입된 고객을 <span class="text-bold">실제 매출로 연결</span>시켜<br><span class="text-bold">지속적인 성장</span>을 만들어 줍니다.</p>
+  <p class="story-main reveal">홈페이지 제작은 소비가 아닌<br>가장 확실한 <span class="text-purple">투자</span>입니다.</p>
 </div>
 
 <!-- ⑥ 투자 + 고객 태도 (배경 포트폴리오) -->
@@ -688,58 +698,58 @@
     <img src="https://picsum.photos/300/200?random=25" alt="" />
   </div>
   <div class="portfolio-bg-content">
-    <p class="story-main">성공적인 투자가 될 홈페이지는<br>어떻게 만들어져야할까요?</p>
+    <p class="story-main">최고의 투자가 되는 홈페이지,<br>그 비결은 바로 이것입니다.</p>
   </div>
 </div>
 
 <!-- ⑦ 고객 태도 -->
 <div class="story-section">
-  <p class="story-sub reveal">아이러니 하게도<br>홈페이지에 방문한 <span class="text-bold">고객의 태도</span>입니다.</p>
-  <h2 class="story-big reveal">읽지 않는다.</h2>
-  <h2 class="story-big reveal">믿지 않는다.</h2>
-  <h2 class="story-big reveal">행동하지 않는다.</h2>
-  <p class="story-main reveal">이 3가지를 해결해야지만<br><span class="text-bold">전환이 잘되는 홈페이지</span>가 됩니다.</p>
+  <p class="story-sub reveal">전환이 잘 되는 홈페이지는<br><span class="text-bold">3가지를 확실하게 해냅니다.</span></p>
+  <h2 class="story-big reveal">읽게 만든다.</h2>
+  <h2 class="story-big reveal">믿게 만든다.</h2>
+  <h2 class="story-big reveal">행동하게 만든다.</h2>
+  <p class="story-main reveal">이 3가지를 완성하면<br><span class="text-bold">매출이 성장하는 홈페이지</span>가 됩니다.</p>
 </div>
 
 <!-- ⑧ 첫번째 원칙 -->
 <div class="story-section">
   <div class="badge reveal">첫번째</div>
   <h2 class="story-big reveal">읽고 싶게 한다</h2>
-  <p class="story-sub reveal">가장 많이 하는 실수는 <span class="text-bold">좋은 걸 다 보여주고 싶은 마음</span>에 홈페이지에 <span class="text-bold">너무 많은 정보</span>를 나열합니다.</p>
-  <p class="story-sub reveal">하지만 <span class="text-bold">정보 과잉</span>은 오히려 <span class="text-bold">가독성</span>과 <span class="text-bold">설득력</span>을 떨어뜨리게 됩니다.</p>
-  <p class="story-sub reveal">잘 읽게 만들려면 <span class="text-bold">불필요한 내용</span>을 <span class="text-bold">과감히 덜어내야</span> 합니다.</p>
-  <p class="story-main reveal">고객이 <span class="text-bold">궁금해 할 정보만</span> 보여주고<br><span class="text-bold">후킹 멘트</span>를 넣어 계속 읽을 수 있도록<br><span class="text-bold">유도</span>하고 잘 읽히도록<br><span class="text-bold">가독성 있게 정리</span>해야 합니다.</p>
+  <p class="story-sub reveal"><span class="text-bold">핵심만 담으면</span> 고객은 자연스럽게 끝까지 읽습니다.</p>
+  <p class="story-sub reveal">정보를 <span class="text-bold">깔끔하게 정리</span>할수록<br><span class="text-bold">가독성</span>과 <span class="text-bold">설득력</span>이 올라갑니다.</p>
+  <p class="story-sub reveal"><span class="text-bold">필요한 핵심만</span> 남기면<br>메시지는 더 강력해집니다.</p>
+  <p class="story-main reveal">고객이 <span class="text-bold">궁금해 할 정보</span>를 보여주고<br><span class="text-bold">후킹 멘트</span>로 다음이 궁금하게 만들며<br><span class="text-bold">가독성 있는 구성</span>으로<br><span class="text-bold">끝까지 읽게</span> 만듭니다.</p>
 </div>
 
 <!-- ⑨ 두번째 원칙 -->
 <div class="story-section">
   <div class="badge reveal">두번째</div>
   <h2 class="story-big reveal">믿을 수 있게 한다</h2>
-  <p class="story-sub reveal">고객은 직접 경험하기 전까지 눈앞에 보이는<br><span class="text-bold">'겉모습'</span>과 <span class="text-bold">'증거'</span>로만 판단할 수밖에 없습니다.</p>
-  <p class="story-sub reveal">디자인 퀄리티가 낮고 근거 자료가<br>부족한 홈페이지는 <span class="text-bold">신뢰를 얻지 못합니다.</span></p>
-  <p class="story-main reveal">고객이 믿게 하려면<br>브랜드와 어울리는 깔끔한 <span class="text-bold">디자인</span>과<br>실제 후기와 사례, 인증서나 현장 사진과 같은<br><span class="text-bold">근거가 더해져야 설득력</span>이 완성됩니다.</p>
+  <p class="story-sub reveal">고객은 눈앞에 보이는<br><span class="text-bold">'첫인상'</span>과 <span class="text-bold">'증거'</span>로 신뢰를 결정합니다.</p>
+  <p class="story-sub reveal">프로페셔널한 디자인과 확실한 근거가 있으면<br>고객은 <span class="text-bold">자연스럽게 신뢰</span>하게 됩니다.</p>
+  <p class="story-main reveal">브랜드에 맞는 <span class="text-bold">세련된 디자인</span>과<br>실제 후기, 성공 사례, 인증서 같은<br><span class="text-bold">확실한 근거</span>가 더해지면<br><span class="text-bold">신뢰와 설득력</span>이 완성됩니다.</p>
 </div>
 
 <!-- ⑩ 세번째 원칙 -->
 <div class="story-section">
   <div class="badge reveal">세번째</div>
   <h2 class="story-big reveal">행동하게 한다</h2>
-  <p class="story-sub reveal">좋은 글과 좋은 디자인만으로<br>고객은 알아서 <span class="text-bold">신청하지 않습니다.</span></p>
-  <p class="story-sub reveal">신청하는 선택 자체가 부담이 되기 때문에<br>미루려고 하죠. 행동으로 이어지지 않으면<br><span class="text-bold">전환은 일어나지 않습니다.</span></p>
-  <p class="story-main reveal">고객이 행동하게 하려면 CTA버튼은<br>눈 띄는 곳마다 넣어 <span class="text-bold">신청을 쉽게</span> 만들고<br><span class="text-bold">놓치기 싫은 심리</span>를 자극하고<br><span class="text-bold">실패에 대한 두려움</span>을 줄여줘야합니다.</p>
+  <p class="story-sub reveal">좋은 글과 좋은 디자인 위에<br><span class="text-bold">한 가지만 더하면</span> 전환이 완성됩니다.</p>
+  <p class="story-sub reveal">고객이 <span class="text-bold">지금 바로 행동할 이유</span>를 만들어주면<br>자연스럽게 <span class="text-bold">전환으로 이어집니다.</span></p>
+  <p class="story-main reveal">CTA 버튼을 눈에 띄는 곳마다 넣어<br><span class="text-bold">신청을 쉽고 간편하게</span> 만들고<br><span class="text-bold">지금이 최적의 타이밍</span>임을 알려주며<br><span class="text-bold">안심하고 시작할 수 있는 확신</span>을 줍니다.</p>
 </div>
 
 <!-- ⑪ 마무리 -->
 <div class="story-section">
-  <p class="story-sub reveal">이 3가지 원칙은 대표님 회사의<br><span class="text-bold">비즈니스 모델을 이해</span>하고<br><span class="text-bold">고객을 명확하게 아는 것</span>에서 시작되어야합니다.</p>
-  <p class="story-sub reveal">하지만 이런 기획은 일반적인 기술자들에게는<br><span class="text-bold">쉽지 않은 일</span>입니다.</p>
-  <p class="story-main reveal">요리를 잘하는 것과 장사를 잘하는 게<br>다른 것처럼 디자인 기술과<br>실제로 매출을 만들어내는 기획은<br><span class="text-bold">전혀 별개의 일</span>입니다.</p>
-  <p class="story-sub reveal">40년간 삼성SDS를 시작으로 직접 사업을 운영하며<br>잘 팔기 위해 고민하고 수천 명의 고객을 상대해 온<br><span class="text-bold">경험에서 나옵니다.</span></p>
+  <p class="story-sub reveal">이 3가지 원칙은 대표님 회사의<br><span class="text-bold">비즈니스 모델을 깊이 이해</span>하고<br><span class="text-bold">고객을 정확히 아는 것</span>에서 완성됩니다.</p>
+  <p class="story-sub reveal">그래서 Apex-homep는<br><span class="text-bold">기술력과 비즈니스 감각</span>을 함께 갖추었습니다.</p>
+  <p class="story-main reveal">맛있는 요리와 잘 되는 장사가<br>다른 것처럼, 뛰어난 디자인 위에<br>실제로 매출을 만들어내는 기획이 더해질 때<br><span class="text-bold">진짜 성과</span>가 나옵니다.</p>
+  <p class="story-sub reveal">삼성SDS에서 시작해 40년간 직접 사업을 운영하며<br>수천 명의 고객과 함께 성장해 온<br><span class="text-bold">실전 경험이 대표님의 성공을 만듭니다.</span></p>
 </div>
 
 <!-- ⑫ CONTACT SECTION -->
 <section id="contact">
-  <h2 class="section-title reveal">내 사업에 맞춘<br>홈페이지 전략을 받아보세요</h2>
+  <h2 class="section-title reveal">내 사업의 성장을 위한<br>맞춤 홈페이지 전략을 받아보세요</h2>
   <form class="contact-form reveal" id="contactForm">
     <div class="form-field">
       <label>이름 *</label>
@@ -757,18 +767,18 @@
       <label>문의 내용</label>
       <textarea id="message" placeholder="어떤 홈페이지가 필요하신가요? 편하게 작성해 주세요."></textarea>
     </div>
-    <button type="submit" class="submit-btn">무료 상담 신청하기</button>
+    <button type="submit" class="submit-btn">무료 성장 전략 받기</button>
   </form>
   <div class="contact-info reveal">
-    <span>카카오톡 채널: @apex-studio</span>
-    <span>이메일: contact@apex-studio.kr</span>
+    <span>카카오톡 채널: @apex-homep</span>
+    <span>이메일: contact@apex-homep.kr</span>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 APEX STUDIO. All rights reserved.</p>
-  <p style="margin-top:8px;">실패없는 디자인으로 매출을 만드는 웹&앱 에이전시</p>
+  <p>© 2026 Apex-homep <span style="color:#CC44FF;">에이펙스홈피</span>. All rights reserved.</p>
+  <p style="margin-top:8px;">성공하는 디자인으로 매출을 키우는 웹&앱 에이전시</p>
 </footer>
 
 <script>
