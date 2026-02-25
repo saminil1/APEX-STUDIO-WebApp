@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import Image from "next/image";
+import Link from "next/link";
 import { PORTFOLIO_ITEMS } from "@/lib/constants";
 
 import "swiper/css";
@@ -97,15 +98,19 @@ export default function PortfolioSection() {
       </motion.div>
 
       {/* 더보기 버튼 */}
-      <motion.button
+      <motion.div
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}
-        className="inline-block border-2 border-white text-white px-10 py-3 text-[15px] font-bold tracking-wider bg-transparent cursor-pointer transition-all hover:bg-white hover:text-black"
       >
-        더보기
-      </motion.button>
+        <Link
+          href="/portfolio"
+          className="inline-block border-2 border-white text-white px-10 py-3 text-[15px] font-bold tracking-wider bg-transparent cursor-pointer transition-all hover:bg-white hover:text-black no-underline"
+        >
+          더보기
+        </Link>
+      </motion.div>
     </section>
   );
 }

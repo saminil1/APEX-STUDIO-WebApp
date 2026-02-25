@@ -10,11 +10,11 @@ export const STATS = [
 ];
 
 export const NAV_ITEMS = [
-  { label: "홈", href: "#" },
-  { label: "포트폴리오", href: "#portfolio" },
-  { label: "비용&기간", href: "#pricing" },
-  { label: "서비스", href: "#services" },
-  { label: "문의하기", href: "#contact" },
+  { label: "홈", href: "/" },
+  { label: "포트폴리오", href: "/portfolio" },
+  { label: "비용&기간", href: "/#pricing" },
+  { label: "서비스", href: "/#services" },
+  { label: "문의하기", href: "/#contact" },
 ];
 
 export const PORTFOLIO_ITEMS = [
@@ -47,6 +47,152 @@ export const PORTFOLIO_ITEMS = [
     name: "새벽 월",
     desc: "아웃도어 브랜드 홈페이지",
     img: "https://picsum.photos/800/450?random=5",
+  },
+];
+
+/* ── 포트폴리오 전체 목록 (별도 페이지용) ── */
+export type PortfolioType = "전체" | "회사홈페이지" | "1P랜딩페이지" | "쇼핑몰" | "웹서비스";
+export type IndustryType = "전체" | "일반" | "IT, 기술" | "F&B" | "건축, 인테리어" | "병원" | "뷰티" | "교육" | "제조";
+
+export const PORTFOLIO_TYPES: PortfolioType[] = [
+  "전체", "회사홈페이지", "1P랜딩페이지", "쇼핑몰", "웹서비스",
+];
+
+export const INDUSTRY_TYPES: IndustryType[] = [
+  "전체", "일반", "IT, 기술", "F&B", "건축, 인테리어", "병원", "뷰티", "교육", "제조",
+];
+
+export interface PortfolioWork {
+  id: string;
+  name: string;
+  desc: string;
+  type: PortfolioType;
+  industry: IndustryType;
+  plan: string;
+  tags: string[];
+  img: string;
+}
+
+export const PORTFOLIO_WORKS: PortfolioWork[] = [
+  {
+    id: "1",
+    name: "케이엠에스테틱",
+    desc: "회사홈페이지",
+    type: "회사홈페이지",
+    industry: "뷰티",
+    plan: "회사홈페이지",
+    tags: ["고객 DB수집"],
+    img: "https://picsum.photos/600/400?random=101",
+  },
+  {
+    id: "2",
+    name: "펠리체컴퍼니",
+    desc: "회사홈페이지",
+    type: "회사홈페이지",
+    industry: "건축, 인테리어",
+    plan: "회사홈페이지",
+    tags: ["고객 DB수집", "포트폴리오"],
+    img: "https://picsum.photos/600/400?random=102",
+  },
+  {
+    id: "3",
+    name: "어썸웰스파라운지",
+    desc: "회사홈페이지",
+    type: "회사홈페이지",
+    industry: "뷰티",
+    plan: "회사홈페이지",
+    tags: ["고객 DB수집"],
+    img: "https://picsum.photos/600/400?random=103",
+  },
+  {
+    id: "4",
+    name: "글로벌 IT솔루션",
+    desc: "회사홈페이지",
+    type: "회사홈페이지",
+    industry: "IT, 기술",
+    plan: "회사홈페이지",
+    tags: ["포트폴리오", "고객 DB수집"],
+    img: "https://picsum.photos/600/400?random=104",
+  },
+  {
+    id: "5",
+    name: "맛있는 한끼",
+    desc: "1P랜딩페이지",
+    type: "1P랜딩페이지",
+    industry: "F&B",
+    plan: "랜딩페이지",
+    tags: ["이벤트", "고객 DB수집"],
+    img: "https://picsum.photos/600/400?random=105",
+  },
+  {
+    id: "6",
+    name: "스마트 클리닉",
+    desc: "회사홈페이지",
+    type: "회사홈페이지",
+    industry: "병원",
+    plan: "회사홈페이지",
+    tags: ["예약시스템", "고객 DB수집"],
+    img: "https://picsum.photos/600/400?random=106",
+  },
+  {
+    id: "7",
+    name: "드림 인테리어",
+    desc: "회사홈페이지",
+    type: "회사홈페이지",
+    industry: "건축, 인테리어",
+    plan: "회사홈페이지",
+    tags: ["포트폴리오"],
+    img: "https://picsum.photos/600/400?random=107",
+  },
+  {
+    id: "8",
+    name: "프레시 마켓",
+    desc: "쇼핑몰",
+    type: "쇼핑몰",
+    industry: "F&B",
+    plan: "브랜드 쇼핑몰",
+    tags: ["쇼핑몰", "결제시스템"],
+    img: "https://picsum.photos/600/400?random=108",
+  },
+  {
+    id: "9",
+    name: "에듀플러스 아카데미",
+    desc: "웹서비스",
+    type: "웹서비스",
+    industry: "교육",
+    plan: "웹서비스",
+    tags: ["회원시스템", "LMS"],
+    img: "https://picsum.photos/600/400?random=109",
+  },
+  {
+    id: "10",
+    name: "미래 제조",
+    desc: "회사홈페이지",
+    type: "회사홈페이지",
+    industry: "제조",
+    plan: "회사홈페이지",
+    tags: ["고객 DB수집", "카탈로그"],
+    img: "https://picsum.photos/600/400?random=110",
+  },
+  {
+    id: "11",
+    name: "뷰티 라운지 서울",
+    desc: "1P랜딩페이지",
+    type: "1P랜딩페이지",
+    industry: "뷰티",
+    plan: "랜딩페이지",
+    tags: ["이벤트", "고객 DB수집"],
+    img: "https://picsum.photos/600/400?random=111",
+  },
+  {
+    id: "12",
+    name: "코드 팩토리",
+    desc: "웹서비스",
+    type: "웹서비스",
+    industry: "IT, 기술",
+    plan: "웹서비스",
+    tags: ["SaaS", "대시보드"],
+    img: "https://picsum.photos/600/400?random=112",
   },
 ];
 

@@ -1,12 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_ITEMS } from "@/lib/constants";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50);
@@ -14,7 +17,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  // 메뉴 열릴 때 body 스크롤 방지
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -24,17 +26,22 @@ export default function Navbar() {
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
-    if (href === "#") {
+
+    // 같은 페이지의 앵커인 경우 스크롤
+    if (href.startsWith("/#")) {
+      const hash = href.slice(1); // "#pricing" 등
+      if (pathname === "/") {
+        const el = document.querySelector(hash);
+        el?.scrollIntoView({ behavior: "smooth" });
+      }
+      // 다른 페이지에서는 Link가 "/" 페이지로 이동 후 hash 처리
+    } else if (href === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      const el = document.querySelector(href);
-      el?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
     <>
-      {/* Navbar */}
       <nav
         className={`fixed top-0 left-0 right-0 z-[1000] flex items-center justify-between px-6 py-5 transition-all duration-300 ${
           scrolled
@@ -43,14 +50,7 @@ export default function Navbar() {
         }`}
       >
         {/* 로고 */}
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            handleNavClick("#");
-          }}
-          className="flex items-center gap-2.5 no-underline"
-        >
+        <Link href="/" className="flex items-center gap-2.5 no-underline">
           <svg
             viewBox="0 0 40 40"
             fill="none"
@@ -64,19 +64,12 @@ export default function Navbar() {
               fill="none"
             />
             <circle cx="20" cy="20" r="3" fill="white" />
-            <line
-              x1="20"
-              y1="2"
-              x2="20"
-              y2="10"
-              stroke="white"
-              strokeWidth="2"
-            />
+            <line x1="20" y1="2" x2="20" y2="10" stroke="white" strokeWidth="2" />
           </svg>
           <span className="text-lg font-black tracking-[2px] text-white">
             APEX STUDIO
           </span>
-        </a>
+        </Link>
 
         {/* 햄버거 버튼 */}
         <button
@@ -100,7 +93,6 @@ export default function Navbar() {
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className="fixed inset-0 z-[2000] flex flex-col items-center justify-center gap-10 bg-black"
           >
-            {/* 닫기 버튼 */}
             <button
               onClick={() => setMenuOpen(false)}
               className="absolute top-6 right-6 bg-transparent border-none text-white text-4xl cursor-pointer leading-none"
@@ -109,22 +101,21 @@ export default function Navbar() {
               ✕
             </button>
 
-            {/* 메뉴 항목 */}
             {NAV_ITEMS.map((item, i) => (
-              <motion.a
+              <motion.div
                 key={item.label}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick(item.href);
-                }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + i * 0.08 }}
-                className="text-white no-underline text-[28px] font-bold tracking-[2px] hover:text-accent transition-colors"
               >
-                {item.label}
-              </motion.a>
+                <Link
+                  href={item.href}
+                  onClick={() => handleNavClick(item.href)}
+                  className="text-white no-underline text-[28px] font-bold tracking-[2px] hover:text-accent transition-colors"
+                >
+                  {item.label}
+                </Link>
+              </motion.div>
             ))}
           </motion.div>
         )}

@@ -13,18 +13,29 @@ export default function useCountUp({
   duration = 2000,
   decimal = false,
 }: UseCountUpOptions) {
-  const [count, setCount] = useState(0);
-  const [hasStarted, setHasStarted] = useState(false);
+  // SSR/SSG에서는 target 값을 표시 (SEO + noscript 대응)
+  const [count, setCount] = useState(target);
+  const [hasMounted, setHasMounted] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
+  // 클라이언트 마운트 시 0으로 리셋
   useEffect(() => {
+    setCount(0);
+    setHasMounted(true);
+  }, []);
+
+  // IntersectionObserver로 뷰포트 진입 감지
+  useEffect(() => {
+    if (!hasMounted || hasAnimated) return;
+
     const el = ref.current;
     if (!el) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasStarted) {
-          setHasStarted(true);
+        if (entry.isIntersecting) {
+          setHasAnimated(true);
           observer.unobserve(el);
         }
       },
@@ -33,10 +44,11 @@ export default function useCountUp({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [hasStarted]);
+  }, [hasMounted, hasAnimated]);
 
+  // 카운트업 애니메이션
   useEffect(() => {
-    if (!hasStarted) return;
+    if (!hasAnimated) return;
 
     const start = performance.now();
 
@@ -51,11 +63,14 @@ export default function useCountUp({
 
       if (progress < 1) {
         requestAnimationFrame(update);
+      } else {
+        // 최종값 정확히 설정
+        setCount(target);
       }
     }
 
     requestAnimationFrame(update);
-  }, [hasStarted, target, duration, decimal]);
+  }, [hasAnimated, target, duration, decimal]);
 
   return { count, ref };
 }
