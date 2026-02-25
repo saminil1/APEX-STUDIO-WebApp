@@ -10,11 +10,19 @@ export const STATS = [
 ];
 
 export const NAV_ITEMS = [
-  { label: "홈", href: "/" },
-  { label: "포트폴리오", href: "/portfolio" },
+  { label: "APEX STUDIO", href: "/" },
+  {
+    label: "포트폴리오",
+    href: "/portfolio",
+    children: [
+      { label: "홈페이지", href: "/portfolio" },
+      { label: "상세페이지", href: "/portfolio/detail" },
+      { label: "Ai컨텐츠", href: "/portfolio/ai" },
+    ],
+  },
   { label: "비용&기간", href: "/#pricing" },
-  { label: "서비스", href: "/#services" },
-  { label: "문의하기", href: "/#contact" },
+  { label: "제작 과정", href: "/#process" },
+  { label: "상담 신청", href: "/#contact" },
 ];
 
 export const PORTFOLIO_ITEMS = [
@@ -203,6 +211,138 @@ export const AI_CONTENT_IMAGES = [
   { src: "https://picsum.photos/400/600?random=13", alt: "AI 인물 이미지" },
   { src: "https://picsum.photos/400/350?random=14", alt: "AI 음식 이미지" },
   { src: "https://picsum.photos/400/450?random=15", alt: "AI 공간 이미지" },
+];
+
+/* ── 상세페이지 포트폴리오 데이터 ── */
+export type DetailCategory = "전체" | "쇼핑몰" | "제품" | "서비스" | "병원" | "뷰티" | "F&B" | "교육";
+
+export const DETAIL_CATEGORIES: DetailCategory[] = [
+  "전체", "쇼핑몰", "제품", "서비스", "병원", "뷰티", "F&B", "교육",
+];
+
+export interface DetailWork {
+  id: string;
+  name: string;
+  category: DetailCategory;
+  desc: string;
+  tags: string[];
+  img: string;
+}
+
+export const DETAIL_WORKS: DetailWork[] = [
+  {
+    id: "d1",
+    name: "프리미엄 에센스 세럼",
+    category: "뷰티",
+    desc: "성분 강조 + 사용후기 중심 구성",
+    tags: ["상세페이지", "전환 최적화"],
+    img: "https://picsum.photos/600/800?random=201",
+  },
+  {
+    id: "d2",
+    name: "오가닉 그래놀라",
+    category: "F&B",
+    desc: "원재료 스토리텔링 + 영양정보 시각화",
+    tags: ["상세페이지", "식품"],
+    img: "https://picsum.photos/600/800?random=202",
+  },
+  {
+    id: "d3",
+    name: "스마트 공기청정기",
+    category: "제품",
+    desc: "기능 비교 + 3D 렌더링 활용",
+    tags: ["리텐츠", "고객 DB수집"],
+    img: "https://picsum.photos/600/800?random=203",
+  },
+  {
+    id: "d4",
+    name: "루미에르 클리닉",
+    category: "병원",
+    desc: "시술 전후 비교 + 의료진 소개",
+    tags: ["상세페이지", "예약 유도"],
+    img: "https://picsum.photos/600/800?random=204",
+  },
+  {
+    id: "d5",
+    name: "키즈 영어 클래스",
+    category: "교육",
+    desc: "커리큘럼 시각화 + 학부모 후기",
+    tags: ["상세페이지", "수강 신청"],
+    img: "https://picsum.photos/600/800?random=205",
+  },
+  {
+    id: "d6",
+    name: "프리미엄 침구 세트",
+    category: "쇼핑몰",
+    desc: "소재 강조 + 라이프스타일 연출",
+    tags: ["리텐츠", "전환 최적화"],
+    img: "https://picsum.photos/600/800?random=206",
+  },
+  {
+    id: "d7",
+    name: "헤어 에센스 오일",
+    category: "뷰티",
+    desc: "성분 인포그래픽 + 사용법 안내",
+    tags: ["상세페이지", "뷰티"],
+    img: "https://picsum.photos/600/800?random=207",
+  },
+  {
+    id: "d8",
+    name: "프로틴 쉐이크",
+    category: "F&B",
+    desc: "영양성분 비교 + 운동 루틴 연계",
+    tags: ["상세페이지", "건강식품"],
+    img: "https://picsum.photos/600/800?random=208",
+  },
+  {
+    id: "d9",
+    name: "온라인 코딩 부트캠프",
+    category: "서비스",
+    desc: "수강 과정 타임라인 + 수료생 후기",
+    tags: ["리텐츠", "전환 최적화"],
+    img: "https://picsum.photos/600/800?random=209",
+  },
+  {
+    id: "d10",
+    name: "반려동물 영양제",
+    category: "제품",
+    desc: "수의사 추천 + 급여 가이드",
+    tags: ["상세페이지", "반려동물"],
+    img: "https://picsum.photos/600/800?random=210",
+  },
+];
+
+/* ── AI 컨텐츠 포트폴리오 데이터 (별도 페이지용) ── */
+export type AiCategory = "전체" | "제품" | "인물" | "음식" | "공간" | "라이프스타일" | "패션";
+
+export const AI_CATEGORIES: AiCategory[] = [
+  "전체", "제품", "인물", "음식", "공간", "라이프스타일", "패션",
+];
+
+export interface AiWork {
+  id: string;
+  category: AiCategory;
+  desc: string;
+  img: string;
+  aspect: "portrait" | "landscape" | "square";
+}
+
+export const AI_WORKS: AiWork[] = [
+  { id: "a1", category: "제품", desc: "프리미엄 화장품 제품컷", img: "https://picsum.photos/600/800?random=301", aspect: "portrait" },
+  { id: "a2", category: "음식", desc: "파인다이닝 메뉴 촬영", img: "https://picsum.photos/600/400?random=302", aspect: "landscape" },
+  { id: "a3", category: "인물", desc: "브랜드 모델 프로필", img: "https://picsum.photos/600/800?random=303", aspect: "portrait" },
+  { id: "a4", category: "공간", desc: "카페 인테리어 연출", img: "https://picsum.photos/600/600?random=304", aspect: "square" },
+  { id: "a5", category: "라이프스타일", desc: "홈 라이프스타일 무드", img: "https://picsum.photos/600/400?random=305", aspect: "landscape" },
+  { id: "a6", category: "패션", desc: "스트릿 패션 룩북", img: "https://picsum.photos/600/800?random=306", aspect: "portrait" },
+  { id: "a7", category: "제품", desc: "전자기기 제품 목업", img: "https://picsum.photos/600/600?random=307", aspect: "square" },
+  { id: "a8", category: "음식", desc: "디저트 카페 메뉴", img: "https://picsum.photos/600/800?random=308", aspect: "portrait" },
+  { id: "a9", category: "공간", desc: "오피스 인테리어 시안", img: "https://picsum.photos/600/400?random=309", aspect: "landscape" },
+  { id: "a10", category: "인물", desc: "기업 대표 프로필 사진", img: "https://picsum.photos/600/800?random=310", aspect: "portrait" },
+  { id: "a11", category: "라이프스타일", desc: "여행 컨셉 비주얼", img: "https://picsum.photos/600/800?random=311", aspect: "portrait" },
+  { id: "a12", category: "패션", desc: "시즌 컬렉션 비주얼", img: "https://picsum.photos/600/600?random=312", aspect: "square" },
+  { id: "a13", category: "제품", desc: "스킨케어 라인업", img: "https://picsum.photos/600/400?random=313", aspect: "landscape" },
+  { id: "a14", category: "음식", desc: "한식 코스 요리", img: "https://picsum.photos/600/600?random=314", aspect: "square" },
+  { id: "a15", category: "공간", desc: "호텔 로비 렌더링", img: "https://picsum.photos/600/800?random=315", aspect: "portrait" },
 ];
 
 /* ── 가격 패키지 데이터 ── */

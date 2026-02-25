@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import PortfolioTabs from "./PortfolioTabs";
 import PortfolioCard from "./PortfolioCard";
 import {
   PORTFOLIO_WORKS,
@@ -32,12 +33,15 @@ export default function PortfolioPageContent() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-[clamp(36px,8vw,56px)] font-black tracking-[3px] leading-tight mb-10"
+          className="text-[clamp(36px,8vw,56px)] font-black tracking-[3px] leading-tight mb-8"
         >
           PORTFOLIO
         </motion.h1>
 
-        {/* 유형 필터 */}
+        {/* 탭 네비게이션 */}
+        <PortfolioTabs />
+
+        {/* PLAN 필터 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
