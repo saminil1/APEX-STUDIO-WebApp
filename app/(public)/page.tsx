@@ -4,6 +4,7 @@ import PortfolioSection from "@/components/sections/PortfolioSection";
 import AiContentSection from "@/components/sections/AiContentSection";
 import StorySection from "@/components/sections/StorySection";
 import PricingSection from "@/components/sections/PricingSection";
+import ProcessSection from "@/components/sections/ProcessSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/layout/Footer";
 
@@ -22,6 +23,8 @@ export default function Home() {
       <StorySection />
       {/* 비용 & 서비스 */}
       <PricingSection />
+      {/* 제작 과정 */}
+      <ProcessSection />
       {/* S13~S14: 문의 폼 + 연락처 */}
       <ContactSection />
       {/* S15: Footer */}

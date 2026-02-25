@@ -169,52 +169,6 @@ export default function PricingSection() {
         </div>
       </motion.div>
 
-      {/* ── 제작 과정 ── */}
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        className="max-w-[1200px] mx-auto mt-28"
-      >
-        <motion.p
-          variants={fadeUp}
-          className="text-[clamp(36px,8vw,56px)] font-black tracking-[3px] text-center mb-4"
-        >
-          PROCESS
-        </motion.p>
-        <motion.h2
-          variants={fadeUp}
-          className="text-subtitle text-center mb-16"
-        >
-          제작 과정
-        </motion.h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {[
-            { step: "01", title: "상담", desc: "요구사항 파악\n목표 설정" },
-            { step: "02", title: "기획", desc: "콘텐츠 구성\n와이어프레임" },
-            { step: "03", title: "디자인", desc: "맞춤 UI 디자인\n고객 피드백" },
-            { step: "04", title: "개발", desc: "반응형 퍼블리싱\n기능 구현" },
-            { step: "05", title: "런칭", desc: "테스트 & 배포\n유지보수 시작" },
-          ].map((item) => (
-            <motion.div
-              key={item.step}
-              variants={cardVariant}
-              className="rounded-2xl border border-white/10 p-6 text-center hover:border-primary/40 transition-colors"
-              style={{ background: "rgba(255,255,255,0.03)" }}
-            >
-              <p className="text-primary font-black text-2xl mb-2">
-                {item.step}
-              </p>
-              <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-              <p className="text-text-sub text-sm whitespace-pre-line">
-                {item.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
     </section>
   );
 }
