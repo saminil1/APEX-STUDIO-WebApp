@@ -114,62 +114,56 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* ── 모바일 사이드 메뉴 ── */}
+      {/* ── 햄버거 사이드 메뉴 (nofaildesign 스타일) ── */}
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* 오버레이 */}
+            {/* 왼쪽 오버레이 (메뉴 바깥 클릭 닫기) */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMenuOpen(false)}
-              className="fixed inset-0 z-[1999] bg-black/60"
+              className="fixed inset-0 z-[1999] bg-black/40"
             />
 
-            {/* 사이드 패널 */}
+            {/* 우측 사이드 패널 */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ duration: 0.35, ease: "easeInOut" }}
-              className="fixed top-0 right-0 bottom-0 z-[2000] w-[280px] bg-[#0a0a0a] border-l border-white/10 flex flex-col"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="fixed top-0 right-0 bottom-0 z-[2000] w-[300px] bg-black flex flex-col"
             >
-              {/* 닫기 */}
-              <div className="flex justify-end p-5">
+              {/* 닫기 버튼 */}
+              <div className="flex justify-start px-7 pt-7 pb-6">
                 <button
                   onClick={() => setMenuOpen(false)}
-                  className="bg-transparent border-none text-white text-2xl cursor-pointer leading-none"
+                  className="bg-transparent border-none text-text-sub text-xl cursor-pointer leading-none hover:text-white transition-colors"
                   aria-label="메뉴 닫기"
                 >
                   ✕
                 </button>
               </div>
 
-              {/* 로고 */}
-              <div className="px-6 pb-8">
-                <span className="text-xl font-black tracking-[2px] text-white">
-                  APEX STUDIO
-                </span>
-              </div>
-
               {/* 메뉴 항목 */}
-              <div className="flex-1 px-6 space-y-1">
+              <div className="flex-1 px-7 space-y-0">
                 {NAV_ITEMS.map((item) => (
                   <div key={item.label}>
                     {"children" in item && item.children ? (
                       <>
+                        {/* 포트폴리오 (서브메뉴 있는 항목) */}
                         <button
                           onClick={() =>
                             setExpandedMenu(
                               expandedMenu === item.label ? null : item.label
                             )
                           }
-                          className="w-full flex items-center justify-between py-3.5 text-white text-lg font-bold tracking-wide bg-transparent border-none cursor-pointer"
+                          className="w-full flex items-center justify-between py-4 text-white text-[17px] font-bold tracking-wide bg-transparent border-none cursor-pointer"
                         >
                           {item.label}
                           <svg
-                            className={`w-4 h-4 transition-transform ${
+                            className={`w-4 h-4 text-text-sub transition-transform duration-300 ${
                               expandedMenu === item.label ? "rotate-180" : ""
                             }`}
                             fill="none"
@@ -186,25 +180,27 @@ export default function Navbar() {
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
                               transition={{ duration: 0.25 }}
-                              className="overflow-hidden pl-4"
+                              className="overflow-hidden"
                             >
-                              {item.children.map((child) => (
-                                <Link
-                                  key={child.href}
-                                  href={child.href}
-                                  onClick={() => {
-                                    setMenuOpen(false);
-                                    setExpandedMenu(null);
-                                  }}
-                                  className={`block py-2.5 text-[15px] no-underline transition-colors ${
-                                    pathname === child.href
-                                      ? "text-primary font-bold"
-                                      : "text-text-sub hover:text-white"
-                                  }`}
-                                >
-                                  {child.label}
-                                </Link>
-                              ))}
+                              <div className="pb-2 space-y-0">
+                                {item.children.map((child) => (
+                                  <Link
+                                    key={child.href}
+                                    href={child.href}
+                                    onClick={() => {
+                                      setMenuOpen(false);
+                                      setExpandedMenu(null);
+                                    }}
+                                    className={`block py-2.5 pl-5 text-[15px] no-underline transition-colors ${
+                                      pathname === child.href
+                                        ? "text-primary font-bold"
+                                        : "text-text-sub hover:text-white"
+                                    }`}
+                                  >
+                                    {child.label}
+                                  </Link>
+                                ))}
+                              </div>
                             </motion.div>
                           )}
                         </AnimatePresence>
@@ -213,7 +209,7 @@ export default function Navbar() {
                       <Link
                         href={item.href}
                         onClick={() => handleNavClick(item.href)}
-                        className="block py-3.5 text-white no-underline text-lg font-bold tracking-wide hover:text-primary transition-colors"
+                        className="block py-4 text-white no-underline text-[17px] font-bold tracking-wide hover:text-primary transition-colors"
                       >
                         {item.label}
                       </Link>
