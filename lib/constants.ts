@@ -398,6 +398,22 @@ export const ERP_WORKS: ErpWork[] = [
   },
   {
     id: "e5",
+    name: "ISO/IEC 27001:2022 정보보안경영시스템",
+    category: "ISO ERP",
+    desc: "정보보안 리스크 관리 · 보안 통제 항목 모니터링",
+    tags: ["ISO 27001", "정보보안", "ISMS"],
+    img: "https://picsum.photos/900/600?random=409",
+  },
+  {
+    id: "e6",
+    name: "ISO/IEC 20000-1 IT서비스경영시스템",
+    category: "ISO ERP",
+    desc: "IT 서비스 프로세스 관리 · SLA 모니터링 대시보드",
+    tags: ["ISO 20000", "ITSM", "서비스관리"],
+    img: "https://picsum.photos/900/600?random=410",
+  },
+  {
+    id: "e7",
     name: "Odoo 생산관리 (MRP)",
     category: "Odoo ERP",
     desc: "BOM · 작업지시 · 생산계획 통합 관리",
@@ -405,7 +421,7 @@ export const ERP_WORKS: ErpWork[] = [
     img: "https://picsum.photos/900/600?random=405",
   },
   {
-    id: "e6",
+    id: "e8",
     name: "Odoo 회계/재무관리",
     category: "Odoo ERP",
     desc: "전표 자동 생성 · 재무제표 실시간 조회",
@@ -413,7 +429,7 @@ export const ERP_WORKS: ErpWork[] = [
     img: "https://picsum.photos/900/600?random=406",
   },
   {
-    id: "e7",
+    id: "e9",
     name: "Odoo HR/인사관리",
     category: "Odoo ERP",
     desc: "채용 · 근태 · 급여 · 평가 올인원 관리",
@@ -421,7 +437,7 @@ export const ERP_WORKS: ErpWork[] = [
     img: "https://picsum.photos/900/600?random=407",
   },
   {
-    id: "e8",
+    id: "e10",
     name: "Odoo 유통/물류관리",
     category: "Odoo ERP",
     desc: "재고 · 입출고 · 배송 추적 통합 솔루션",
