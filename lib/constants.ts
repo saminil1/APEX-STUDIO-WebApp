@@ -29,6 +29,41 @@ export const NAV_ITEMS = [
 
 export const PORTFOLIO_ITEMS = [
   {
+    category: "인증기관",
+    name: "아이지씨인증원",
+    desc: "ISO 국제인증 심사·발급 전문기관 홈페이지",
+    img: "https://picsum.photos/800/450?random=21",
+    url: "https://igcert.org",
+  },
+  {
+    category: "인증기관",
+    name: "지피씨인증원",
+    desc: "글로벌 품질인증 전문기관 홈페이지",
+    img: "https://picsum.photos/800/450?random=22",
+    url: "https://gpcert.org",
+  },
+  {
+    category: "인증기관",
+    name: "지아이씨인증원",
+    desc: "ISO 경영시스템 인증·컨설팅 전문기관 홈페이지",
+    img: "https://picsum.photos/800/450?random=23",
+    url: "https://gicert.org",
+  },
+  {
+    category: "기업 홈페이지",
+    name: "DNA Technology",
+    desc: "기술 솔루션 기업 홈페이지",
+    img: "https://picsum.photos/800/450?random=24",
+    url: "https://dna-tec.org",
+  },
+  {
+    category: "기업 홈페이지",
+    name: "RUS Test",
+    desc: "시험·검사 전문기관 홈페이지",
+    img: "https://picsum.photos/800/450?random=25",
+    url: "https://rus-test.org",
+  },
+  {
     category: "브랜드 쇼핑몰",
     name: "APEX 뷰티",
     desc: "프리미엄 뷰티 브랜드 홈페이지",
@@ -84,6 +119,56 @@ export interface PortfolioWork {
 }
 
 export const PORTFOLIO_WORKS: PortfolioWork[] = [
+  {
+    id: "13",
+    name: "아이지씨인증원",
+    desc: "회사홈페이지",
+    type: "회사홈페이지",
+    industry: "일반",
+    plan: "회사홈페이지",
+    tags: ["ISO 인증", "고객 DB수집"],
+    img: "https://picsum.photos/600/400?random=121",
+  },
+  {
+    id: "14",
+    name: "지피씨인증원",
+    desc: "회사홈페이지",
+    type: "회사홈페이지",
+    industry: "일반",
+    plan: "회사홈페이지",
+    tags: ["ISO 인증", "고객 DB수집"],
+    img: "https://picsum.photos/600/400?random=122",
+  },
+  {
+    id: "15",
+    name: "지아이씨인증원",
+    desc: "회사홈페이지",
+    type: "회사홈페이지",
+    industry: "일반",
+    plan: "회사홈페이지",
+    tags: ["ISO 인증", "고객 DB수집"],
+    img: "https://picsum.photos/600/400?random=123",
+  },
+  {
+    id: "16",
+    name: "DNA Technology",
+    desc: "회사홈페이지",
+    type: "회사홈페이지",
+    industry: "IT, 기술",
+    plan: "회사홈페이지",
+    tags: ["기술 솔루션", "포트폴리오"],
+    img: "https://picsum.photos/600/400?random=124",
+  },
+  {
+    id: "17",
+    name: "RUS Test",
+    desc: "회사홈페이지",
+    type: "회사홈페이지",
+    industry: "일반",
+    plan: "회사홈페이지",
+    tags: ["시험·검사", "고객 DB수집"],
+    img: "https://picsum.photos/600/400?random=125",
+  },
   {
     id: "1",
     name: "케이엠에스테틱",
