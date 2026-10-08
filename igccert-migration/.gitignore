@@ -1,0 +1,6 @@
+# 백업 데이터·비밀정보는 절대 커밋하지 않음 (개인정보/DB 포함)
+.env
+site/
+db-init/
+certs/
+logs/
